@@ -6,6 +6,7 @@ members = [
     "crates/binary_search",
     "crates/double_pointer",
     "crates/graph",
+    "crates/greedy",
     "crates/hash",
     "crates/heap",
     "crates/linked_list",
