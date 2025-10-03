@@ -12,6 +12,7 @@ members = [
     "crates/heap",
     "crates/linked_list",
     "crates/matrix",
+    "crates/multidim_dp",
     "crates/sliding_window",
     "crates/stack",
     "crates/sub_sequence",
