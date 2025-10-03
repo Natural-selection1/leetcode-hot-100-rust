@@ -51,6 +51,10 @@ name = "multidimensional_dynamic_programming"
 version = "0.1.0"
 
 [[package]]
+name = "skill"
+version = "0.1.0"
+
+[[package]]
 name = "sliding_window"
 version = "0.1.0"
 
