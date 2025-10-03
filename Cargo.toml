@@ -3,6 +3,7 @@ resolver = "3"
 members = [
     "crates/array",
     "crates/double_pointer",
+    "crates/graph",
     "crates/hash",
     "crates/linked_list",
     "crates/matrix",
