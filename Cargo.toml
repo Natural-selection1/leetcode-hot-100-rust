@@ -3,6 +3,7 @@ resolver = "3"
 members = [
     "crates/array",
     "crates/backtracking",
+    "crates/binary_search",
     "crates/double_pointer",
     "crates/graph",
     "crates/hash",
