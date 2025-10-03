@@ -4,6 +4,7 @@ members = [
     "crates/array",
     "crates/double_pointer",
     "crates/hash",
+    "crates/matrix",
     "crates/sliding_window",
     "crates/sub_sequence",
 ]
