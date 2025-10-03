@@ -10,6 +10,7 @@ members = [
     "crates/linked_list",
     "crates/matrix",
     "crates/sliding_window",
+    "crates/stack",
     "crates/sub_sequence",
     "crates/tree",
 ]
