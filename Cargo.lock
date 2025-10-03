@@ -23,6 +23,10 @@ name = "graph"
 version = "0.1.0"
 
 [[package]]
+name = "greedy"
+version = "0.1.0"
+
+[[package]]
 name = "hash"
 version = "0.1.0"
 
