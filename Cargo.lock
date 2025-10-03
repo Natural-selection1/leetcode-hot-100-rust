@@ -15,6 +15,10 @@ name = "hash"
 version = "0.1.0"
 
 [[package]]
+name = "matrix"
+version = "0.1.0"
+
+[[package]]
 name = "sliding_window"
 version = "0.1.0"
 
