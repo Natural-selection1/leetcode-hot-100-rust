@@ -27,6 +27,10 @@ name = "hash"
 version = "0.1.0"
 
 [[package]]
+name = "heap"
+version = "0.1.0"
+
+[[package]]
 name = "linked_list"
 version = "0.1.0"
 
