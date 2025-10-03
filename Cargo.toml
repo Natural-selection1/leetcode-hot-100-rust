@@ -1,6 +1,7 @@
 [workspace]
 resolver = "3"
 members = [
+    "crates/array",
     "crates/double_pointer",
     "crates/hash",
     "crates/sliding_window",
