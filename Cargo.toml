@@ -5,6 +5,7 @@ members = [
     "crates/backtracking",
     "crates/binary_search",
     "crates/double_pointer",
+    "crates/dynamic_programming",
     "crates/graph",
     "crates/greedy",
     "crates/hash",
