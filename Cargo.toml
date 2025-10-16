@@ -8,4 +8,5 @@ members = [
     "crates/matrix",
     "crates/sliding_window",
     "crates/sub_sequence",
+    "crates/tree",
 ]
