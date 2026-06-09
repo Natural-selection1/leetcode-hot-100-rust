@@ -13,8 +13,8 @@ impl crate::Solution {
         for row in 0..(matrix_len - 1) {
             // 不含对角线的下三角形
             for column in (row + 1)..matrix_len {
-                (matrix[row][column], matrix[column][row]) =
-                    (matrix[column][row], matrix[row][column]);
+                let (left, right) = matrix.split_at_mut(column);
+                std::mem::swap(&mut left[row][column], &mut right[0][row]);
             }
         }
         matrix.iter_mut().for_each(|row| row.reverse());

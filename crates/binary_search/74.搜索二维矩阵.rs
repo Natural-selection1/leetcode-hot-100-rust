@@ -5,29 +5,39 @@
  */
 
 // @lc code=start
-use std::cmp::Ordering;
 
 impl crate::Solution {
     // 暴力二分
-    pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-        matrix
+    pub fn search_matrix_(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+        let target_line = matrix
             .into_iter()
-            .find(|row| row.last() >= Some(&target))
-            .is_some_and(|row| row.binary_search(&target).is_ok())
+            .find(|row| row.last().expect("行为空") >= &target);
+
+        match target_line {
+            Some(x) => (|row: &Vec<i32>| row.binary_search(&target).is_ok())(&x),
+            None => false,
+        }
     }
 
     // 利用单调性
-    pub fn search_matrix_(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-        let mut i = 0;
-        let mut j_ = Some(matrix[0].len() - 1);
+    pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+        let mut row = 0;
+        let mut col_opt = Some(matrix[0].len() - 1);
 
-        while let Some(j) = j_
-            && let Some(num) = matrix.get(i).and_then(|row| row.get(j))
-        {
-            match num.cmp(&target) {
-                Ordering::Greater => j_ = j.checked_sub(1),
-                Ordering::Less => i += 1,
-                Ordering::Equal => return true,
+        loop {
+            let col = match col_opt {
+                Some(col) => col,
+                None => break,
+            };
+            let val = match matrix.get(row).and_then(|r| r.get(col)) {
+                Some(val) => val,
+                None => break,
+            };
+
+            match val.cmp(&target) {
+                std::cmp::Ordering::Greater => col_opt = col.checked_sub(1),
+                std::cmp::Ordering::Less => row += 1,
+                std::cmp::Ordering::Equal => return true,
             }
         }
 

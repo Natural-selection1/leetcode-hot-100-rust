@@ -10,6 +10,7 @@ impl crate::Solution {
         let mut fresh_orange_count: i32 = 0;
         let mut rotten_orange = vec![];
 
+        // 收集初始烂橘子坐标(用于感染)和好橘子总数(用于判定)
         for (i, row) in grid.iter().enumerate() {
             for (j, &orange_state) in row.iter().enumerate() {
                 match orange_state {

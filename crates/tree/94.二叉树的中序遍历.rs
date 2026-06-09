@@ -19,9 +19,13 @@ impl crate::Solution {
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, answer: &mut Vec<i32>) {
-    let Some(node) = node else { return };
-    dfs(&node.borrow().left, answer);
-    answer.push(node.borrow().val);
-    dfs(&node.borrow().right, answer);
+    let node = match node {
+        None => return,
+        Some(node) => node.borrow(),
+    };
+
+    dfs(&node.left, answer);
+    answer.push(node.val);
+    dfs(&node.right, answer);
 }
 // @lc code=end

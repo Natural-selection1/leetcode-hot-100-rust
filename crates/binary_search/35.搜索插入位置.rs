@@ -23,7 +23,7 @@ impl crate::Solution {
         // nums[left-1] < target
         // nums[right] >= target
         while left < right {
-            let mid = left.midpoint(right);
+            let mid = (left + right) / 2;
 
             match nums[mid].cmp(&target) {
                 Ordering::Greater => right = mid,

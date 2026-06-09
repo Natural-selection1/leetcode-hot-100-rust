@@ -22,8 +22,10 @@ fn mid_order_def(node: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32, target_n
     if target_num != &i32::MIN {
         return;
     }
-    let Some(node) = node else { return };
-    let node = node.borrow();
+    let node = match node {
+        None => return,
+        Some(node) => node.borrow(),
+    };
 
     mid_order_def(&node.left, count, target_num);
     *count += 1;

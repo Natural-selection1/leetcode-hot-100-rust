@@ -9,13 +9,17 @@ use std::collections::HashMap;
 
 impl crate::Solution {
     pub fn is_valid(raw_string: String) -> bool {
-        if !raw_string.len().is_multiple_of(2) {
+        if raw_string.len() % 2 == 0 {
             return false;
         }
 
-        let map: HashMap<u8, u8> = [(b')', b'('), (b']', b'['), (b'}', b'{')]
-            .into_iter()
-            .collect();
+        let map: HashMap<u8, u8> = {
+            let mut map = HashMap::new();
+            map.insert(b')', b'(');
+            map.insert(b']', b'[');
+            map.insert(b'}', b'{');
+            map
+        };
         let mut stack = vec![];
 
         for char in raw_string.bytes() {

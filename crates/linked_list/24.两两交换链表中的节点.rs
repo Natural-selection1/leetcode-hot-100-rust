@@ -16,13 +16,17 @@ impl crate::Solution {
         };
         let mut cursor = &mut dummy;
 
-        while let Some(mut node_1) = cursor.next.take_if(|node| node.next.is_some())
-            && let Some(mut node_2) = node_1.next.take()
-        {
+        loop {
+            if cursor.next.is_none() || cursor.next.as_ref().unwrap().next.is_none() {
+                break;
+            }
+            let mut node_1 = cursor.next.take().unwrap();
+            let mut node_2 = node_1.next.take().unwrap();
+
             node_1.next = node_2.next.take();
             node_2.next = Some(node_1);
             cursor.next = Some(node_2);
-            cursor = cursor.next.as_mut()?.next.as_mut()?
+            cursor = cursor.next.as_mut()?.next.as_mut()?;
         }
 
         dummy.next

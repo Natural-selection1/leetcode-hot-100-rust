@@ -32,8 +32,10 @@ fn dfs(
     if !*is_valid {
         return;
     }
-    let Some(node) = node else { return };
-    let node = node.borrow();
+    let node = match node {
+        None => return,
+        Some(node) => node.borrow(),
+    };
     let node_val = node.val as i64;
 
     if !(left_boundary + 1..right_boundary).contains(&node_val) {
@@ -44,13 +46,14 @@ fn dfs(
 }
 
 fn dfs_(node: &Option<Rc<RefCell<TreeNode>>>, left_boundary: i64, right_boundary: i64) -> bool {
-    let Some(node) = node else { return true };
-    let node = node.borrow();
+    let node = match node {
+        None => return true,
+        Some(node) => node.borrow(),
+    };
     let node_val = node.val as i64;
 
     (left_boundary + 1..right_boundary).contains(&node_val)
         && dfs_(&node.left, left_boundary, node_val)
         && dfs_(&node.right, node_val, right_boundary)
 }
-
 // @lc code=end

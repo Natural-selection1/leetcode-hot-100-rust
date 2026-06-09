@@ -12,7 +12,6 @@ impl crate::Solution {
             *count_map.entry(num).or_insert(0) += 1;
             count_map
         });
-        #[allow(clippy::unwrap_used, reason = "count_map不为空, 至少是0")]
         let max_count = *count_map.values().max().unwrap();
 
         // 第二步：把出现次数相同的元素，放到同一个桶中

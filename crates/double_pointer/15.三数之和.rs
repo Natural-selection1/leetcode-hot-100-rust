@@ -15,17 +15,20 @@ impl crate::Solution {
         let max_two_sum = nums[length - 2] + nums[length - 1];
 
         for (l_index, &l_val) in nums.iter().enumerate().take(length - 2) {
+            // 因为从左向右以最小值为基准遍历
+            // 所以当最小的都大于0时, 则三个数都必然大于0了
+            if l_val > 0 {
+                break;
+            }
             // 加上最大的两个数都不超过0, 或者这个数字已经找过一次了
             if max_two_sum + l_val < 0 || nums.get(l_index - 1) == Some(&l_val) {
                 continue;
-            }
-            if l_val.is_positive() {
-                break;
             }
 
             // 把 `三数之和` 简化为 `两数之和`
             let mut m_index = l_index + 1;
             let mut r_index = length - 1;
+
             while m_index < r_index {
                 let m_val = nums[m_index];
                 let r_val = nums[r_index];

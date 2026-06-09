@@ -14,18 +14,18 @@ impl crate::Solution {
         }
 
         let mut answer = vec![];
-        let num_chars_map = [
-            ('2', vec!['a', 'b', 'c']),
-            ('3', vec!['d', 'e', 'f']),
-            ('4', vec!['g', 'h', 'i']),
-            ('5', vec!['j', 'k', 'l']),
-            ('6', vec!['m', 'n', 'o']),
-            ('7', vec!['p', 'q', 'r', 's']),
-            ('8', vec!['t', 'u', 'v']),
-            ('9', vec!['w', 'x', 'y', 'z']),
-        ]
-        .into_iter()
-        .collect();
+        let num_chars_map: HashMap<char, Vec<char>> = {
+            let mut map = HashMap::new();
+            map.insert('2', vec!['a', 'b', 'c']);
+            map.insert('3', vec!['d', 'e', 'f']);
+            map.insert('4', vec!['g', 'h', 'i']);
+            map.insert('5', vec!['j', 'k', 'l']);
+            map.insert('6', vec!['m', 'n', 'o']);
+            map.insert('7', vec!['p', 'q', 'r', 's']);
+            map.insert('8', vec!['t', 'u', 'v']);
+            map.insert('9', vec!['w', 'x', 'y', 'z']);
+            map
+        };
 
         dfs(
             &mut answer,

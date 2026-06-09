@@ -10,7 +10,11 @@ type Node = Box<ListNode>;
 
 impl crate::Solution {
     pub fn sort_list(head: Option<Node>) -> Option<Node> {
-        if head.as_ref().is_none_or(|node| node.next.is_none()) {
+        if match head.as_ref() {
+            None => true,
+            Some(node) if node.next.is_none() => true,
+            Some(_) => false,
+        } {
             return head;
         }
         // 模拟归并排序
@@ -32,7 +36,7 @@ fn middle_node(head: &Option<Node>) -> Option<Node> {
         fast = &fast.as_ref()?.next.as_ref()?.next;
     }
 
-    #[allow(mutable_transmutes, reason = "fast生命结束, slow是唯一存活引用")]
+    #[allow(mutable_transmutes)]
     let slow: &mut Option<Node> = unsafe { std::mem::transmute(slow) };
     slow.take()
 }

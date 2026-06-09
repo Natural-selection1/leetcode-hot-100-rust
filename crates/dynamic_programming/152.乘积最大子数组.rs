@@ -12,14 +12,15 @@ impl crate::Solution {
         let mut recent_max_product = 1;
         let mut recent_min_product = 1;
 
-        #[allow(clippy::unwrap_used, reason = "所给切片不为空")]
         for num in nums {
             let alternative_nums = [num, num * recent_max_product, num * recent_min_product];
             let max = *alternative_nums.iter().max().unwrap();
             let min = *alternative_nums.iter().min().unwrap();
 
             max_product = max_product.max(max);
-            (recent_max_product, recent_min_product) = (max, min);
+
+            recent_max_product = max;
+            recent_min_product = min;
         }
 
         max_product

@@ -27,14 +27,13 @@ impl crate::Solution {
         let left = Self::lowest_common_ancestor(root_left, node_1.clone(), node_2.clone());
         let right = Self::lowest_common_ancestor(root_right, node_1, node_2);
 
-        match (&left, &right) {
+        match (left, right) {
             // 都没有找到，就返回 None
             (None, None) => None,
             // 左右都找到, 当前节点是最近公共祖先
             (Some(_), Some(_)) => Some(root),
             // 如果只有单边找到，就返回那一边的返回值
-            (None, Some(_)) => right,
-            (Some(_), None) => left,
+            (None, Some(node)) | (Some(node), None) => Some(node),
         }
     }
 }

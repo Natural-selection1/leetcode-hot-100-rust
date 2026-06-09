@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "2.两数相加.rs"]
 mod add_two_numbers;
@@ -11,6 +10,8 @@ mod detect_cycle;
 mod get_intersection_node;
 #[path = "141.环形链表.rs"]
 mod has_cycle;
+#[path = "添加节点.rs"]
+mod insert_greatest_common_divisors;
 #[path = "234.回文链表.rs"]
 mod is_palindrome;
 #[path = "146.lru-缓存.rs"]

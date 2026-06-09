@@ -36,12 +36,10 @@ impl MinStack {
     }
 
     fn top(&self) -> i32 {
-        #[allow(clippy::unwrap_used, reason = "题目保证不会调用 top 方法时栈为空")]
         self.vec.last().unwrap().val
     }
 
     fn get_min(&self) -> i32 {
-        #[allow(clippy::unwrap_used, reason = "题目保证不会调用 get_min 方法时栈为空")]
         self.vec.last().unwrap().prefix_min
     }
 }

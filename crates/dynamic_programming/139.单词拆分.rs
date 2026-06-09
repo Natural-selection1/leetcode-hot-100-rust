@@ -10,7 +10,10 @@ use std::collections::HashSet;
 impl crate::Solution {
     pub fn word_break(raw_string: String, word_dict: Vec<String>) -> bool {
         let string_len = raw_string.len();
-        let words: HashSet<String> = HashSet::from_iter(word_dict);
+        let mut words: HashSet<String> = HashSet::new();
+        for string in word_dict {
+            words.insert(string);
+        }
 
         let mut can_build_until = vec![false; string_len + 1];
         can_build_until[0] = true;

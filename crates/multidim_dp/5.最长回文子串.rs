@@ -59,10 +59,7 @@ fn update_range(range: &mut (usize, usize), searched_range: (usize, usize)) {
 }
 
 fn center_expand(raw_chars: &[u8], mut l: usize, mut r: usize) -> (usize, usize) {
-    while raw_chars
-        .get(l - 1)
-        .is_some_and(|l_char| Some(l_char) == raw_chars.get(r + 1))
-    {
+    while matches!(raw_chars.get(l - 1), Some(l_char) if Some(l_char) == raw_chars.get(r + 1)) {
         l -= 1;
         r += 1;
     }

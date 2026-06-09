@@ -14,7 +14,9 @@ impl crate::Solution {
         for (r_index, &height) in heights.iter().enumerate() {
             // 当所给数组被多个 0 进行分隔后, 栈底会出现 0 囤积
             // 但是 0 作为高度计算出的面积不可能会是更大的值, 所以忽略是可行的
-            while let Some(h_index) = increasing_stack.pop_if(|i| height < heights[*i]) {
+            while matches!(increasing_stack.last(), Some(&last_index) if height < heights[last_index])
+            {
+                let h_index = increasing_stack.pop().unwrap();
                 let height = heights[h_index];
                 let width = increasing_stack
                     .last()

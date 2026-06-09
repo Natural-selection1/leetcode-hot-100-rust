@@ -17,11 +17,14 @@ impl crate::Solution {
 }
 
 fn dfs_invert_tree(node: &mut Option<Rc<RefCell<TreeNode>>>) {
-    let Some(node) = node else { return };
-    let mut node_borrow = node.borrow_mut();
-    dfs_invert_tree(&mut node_borrow.left);
-    dfs_invert_tree(&mut node_borrow.right);
+    let mut node = match node {
+        None => return,
+        Some(node) => node.borrow_mut(),
+    };
 
-    unsafe { std::ptr::swap(&mut node_borrow.left, &mut node_borrow.right) };
+    dfs_invert_tree(&mut node.left);
+    dfs_invert_tree(&mut node.right);
+
+    unsafe { std::ptr::swap(&mut node.left, &mut node.right) };
 }
 // @lc code=end

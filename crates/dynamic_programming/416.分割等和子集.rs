@@ -12,7 +12,7 @@ impl crate::Solution {
         let target_sum = nums_sum / 2;
 
         // 可行性检查
-        if !nums_sum.is_multiple_of(2) || nums.iter().max() > Some(&target_sum) {
+        if (nums_sum % 2 != 0) || nums.iter().max() > Some(&target_sum) {
             return false;
         }
 

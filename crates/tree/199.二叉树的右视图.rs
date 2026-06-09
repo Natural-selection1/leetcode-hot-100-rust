@@ -19,8 +19,10 @@ impl crate::Solution {
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, depth: &mut usize, vec_right_view: &mut Vec<i32>) {
-    let Some(node) = node else { return };
-    let node = node.borrow();
+    let node = match node {
+        Some(node) => node.borrow(),
+        None => return,
+    };
 
     if vec_right_view.len() == *depth {
         vec_right_view.push(node.val);

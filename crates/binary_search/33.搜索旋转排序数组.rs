@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+use std::ops::{Add, Div};
+
 impl crate::Solution {
     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
         let last = nums.last();
@@ -13,7 +15,7 @@ impl crate::Solution {
         let mut right = nums.len() - 1;
 
         while left < right {
-            let mid = left.midpoint(right);
+            let mid = midpoint(left, right);
             let mid_in_first_segment = Some(&nums[mid]) > last;
 
             match (target_in_first_segment, mid_in_first_segment) {
@@ -28,8 +30,19 @@ impl crate::Solution {
             }
         }
 
-        if nums[left] == target { left as _ } else { -1 }
+        if nums[left] == target {
+            left as _
+        } else {
+            -1
+        }
     }
+}
+
+fn midpoint<T: Add>(a: T, b: T) -> T
+where
+    <T as Add>::Output: Div<usize, Output = T>,
+{
+    (a + b) / 2
 }
 
 // @lc code=end

@@ -9,8 +9,15 @@ use std::collections::HashSet;
 
 impl crate::Solution {
     pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
-        let set: HashSet<i32> = HashSet::from_iter(nums);
-        let half_nums_len = set.len().midpoint(0) as i32;
+        let set: HashSet<i32> = {
+            let mut set = HashSet::new();
+            for num in nums {
+                set.insert(num);
+            }
+            set
+        };
+
+        // let half_nums_len = ((set.len() + 1) / 2) as i32; // 用于剪枝
         let mut longest_sequence_len = 0;
 
         for &num in &set {
@@ -19,12 +26,12 @@ impl crate::Solution {
                 continue;
             }
             // * 当位于某序列的起点, 检查、直到元素不存在
-            let current_sequence_length = (num..).take_while(|&x| set.contains(&x)).count();
+            let current_sequence_length = (num..).take_while(|x| set.contains(x)).count();
             longest_sequence_len = longest_sequence_len.max(current_sequence_length as i32);
 
-            if longest_sequence_len >= half_nums_len {
-                break;
-            }
+            // if longest_sequence_len >= half_nums_len {
+            //     break;
+            // }
         }
 
         longest_sequence_len

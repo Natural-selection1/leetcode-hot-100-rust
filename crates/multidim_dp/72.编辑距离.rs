@@ -24,7 +24,6 @@ impl crate::Solution {
 
                 match source_char == target_char {
                     true => dp[col + 1] = prev,
-                    #[allow(clippy::unwrap_used, reason = "所给切片不为空")]
                     false => dp[col + 1] = [prev, dp[col + 1], dp[col]].iter().min().unwrap() + 1,
                 }
                 prev = unchanged_cur

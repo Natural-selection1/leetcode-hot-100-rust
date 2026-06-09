@@ -17,7 +17,10 @@ impl crate::Solution {
 
         for num in nums {
             match (count, num == major_num) {
-                (0, _) => (major_num, count) = (num, 1),
+                (0, _) => {
+                    major_num = num;
+                    count = 1;
+                }
                 (_, true) => count += 1,
                 (_, false) => count -= 1,
             }

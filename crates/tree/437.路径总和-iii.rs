@@ -15,7 +15,7 @@ use std::rc::Rc;
 impl crate::Solution {
     pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
         let mut answer = 0;
-        let mut sum_count_map = HashMap::with_capacity(1500);
+        let mut sum_count_map = HashMap::with_capacity(1000);
         sum_count_map.insert(0, 1);
 
         dfs(
@@ -37,8 +37,10 @@ fn dfs(
     prefix_sum: &mut i64,
     answer: &mut i32,
 ) {
-    let Some(node) = node else { return };
-    let node = node.borrow();
+    let node = match node {
+        Some(node) => node.borrow(),
+        None => return,
+    };
 
     *prefix_sum += node.val as i64;
     let differen = *prefix_sum - target_sum;

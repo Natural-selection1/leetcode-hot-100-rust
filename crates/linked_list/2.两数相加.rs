@@ -6,11 +6,13 @@
 
 // @lc code=start
 use crate::ListNode;
-type Node = Box<ListNode>;
 
 impl crate::Solution {
     // 迭代写法
-    pub fn add_two_numbers_(mut l1: Option<Node>, mut l2: Option<Node>) -> Option<Node> {
+    pub fn add_two_numbers_(
+        mut l1: Option<Box<ListNode>>,
+        mut l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
         let mut dummy = ListNode::new(i32::MIN);
         let mut current = &mut dummy;
         let mut carry = 0;
@@ -34,23 +36,34 @@ impl crate::Solution {
     }
 
     // 递归写法
-    pub fn add_two_numbers(l1: Option<Node>, l2: Option<Node>) -> Option<Node> {
+    pub fn add_two_numbers(
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
         compute(l1, l2, 0)
     }
 }
 
-#[rustfmt::skip]
-fn compute(l1: Option<Node>, l2: Option<Node>, mut carry: i32) -> Option<Node> {
+fn compute(
+    l1: Option<Box<ListNode>>,
+    l2: Option<Box<ListNode>>,
+    mut carry: i32,
+) -> Option<Box<ListNode>> {
     (l1.is_some() || l2.is_some() || carry != 0).then(|| {
-        Some(Box::new(ListNode {
-            next: compute(
-                l1.and_then(|node| { carry += node.val; node.next }),
-                l2.and_then(|node| { carry += node.val; node.next }),
-                carry / 10,
-            ),
-            val: carry % 10,
-        }))
-    })?
-}
+        let l1 = l1.and_then(|node| {
+            carry += node.val;
+            node.next
+        });
 
+        let l2 = l2.and_then(|node| {
+            carry += node.val;
+            node.next
+        });
+
+        Box::new(ListNode {
+            next: compute(l1, l2, carry / 10),
+            val: carry % 10,
+        })
+    })
+}
 // @lc code=end

@@ -41,7 +41,6 @@ impl crate::Solution {
             })
             .collect();
 
-        #[allow(clippy::unwrap_used, reason = "前后缀数组不为空")]
         Iterator::zip(postfix_max.iter().rev(), prefix_min.iter())
             .map(|(post, pre)| post - pre)
             .max()

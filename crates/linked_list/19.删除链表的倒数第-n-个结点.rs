@@ -25,7 +25,7 @@ impl crate::Solution {
             right = node;
         }
 
-        #[allow(mutable_transmutes, reason = "right生命结束, left是唯一存活引用")]
+        #[allow(mutable_transmutes)]
         let left: &mut ListNode = unsafe { std::mem::transmute(left) };
         left.next = left.next.take()?.next;
 

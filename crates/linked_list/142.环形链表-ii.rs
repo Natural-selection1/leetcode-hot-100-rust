@@ -16,17 +16,20 @@ impl ListNode {
 }
 
 pub fn detect_cycle_position(head: Option<NonNull<ListNode>>) -> i32 {
-    let Some(head) = head else { return -1 };
+    let head = match head {
+        Some(head) => head,
+        None => return -1,
+    };
     // 检测是否有环，并找到相遇点
-    let Some(meet_node) = find_meeting_point(head) else {
-        return -1;
+    let meet_node = match find_meeting_point(head) {
+        Some(meet_node) => meet_node,
+        None => return -1,
     };
 
     // 两个指针以相同速度前进，相遇点即为环入口
     let mut ptr1 = head;
     let mut ptr2 = meet_node;
     let mut count = 0;
-    #[allow(clippy::unwrap_used, reason = "一定有环, 所以永不为空")]
     while ptr1 != ptr2 {
         ptr1 = unsafe { ptr1.as_ref().next }.unwrap();
         ptr2 = unsafe { ptr2.as_ref().next }.unwrap();

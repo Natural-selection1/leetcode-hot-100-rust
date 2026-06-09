@@ -10,9 +10,10 @@ impl crate::Solution {
         let mut cursor_i = nums.len().checked_sub(2);
 
         // Step 1: 从后向前查找第一个相邻升序对(i, i+1)
-        while let Some(i) = cursor_i
-            && nums[i] >= nums[i + 1]
-        {
+        while let Some(i) = cursor_i {
+            if nums[i] < nums[i + 1] {
+                break;
+            }
             cursor_i = i.checked_sub(1);
         }
 
@@ -20,9 +21,10 @@ impl crate::Solution {
         if let Some(i) = cursor_i {
             let mut cursor_j = nums.len().checked_sub(1);
             // Step 2: 从后向前查找第一个大于nums[i]的元素
-            while let Some(j) = cursor_j
-                && nums[i] >= nums[j]
-            {
+            while let Some(j) = cursor_j {
+                if nums[i] < nums[j] {
+                    break;
+                }
                 cursor_j = j.checked_sub(1);
             }
             // Step 3: 交换nums[i]和nums[j]

@@ -38,8 +38,7 @@ impl MedianFinder {
             }
         }
     }
-
-    #[allow(clippy::unwrap_used, reason = "测试保证调用该方法时至少有一个元素")]
+    
     fn find_median(&self) -> f64 {
         match self.left.len() > self.right.len() {
             true => *self.left.peek().unwrap() as f64,

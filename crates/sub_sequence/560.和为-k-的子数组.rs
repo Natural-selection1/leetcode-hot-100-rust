@@ -5,7 +5,6 @@
  */
 
 // @lc code=start
-#![allow(clippy::option_map_unit_fn)]
 use std::collections::HashMap;
 
 impl crate::Solution {
@@ -20,7 +19,9 @@ impl crate::Solution {
             prefix_sum += num;
 
             let difference = prefix_sum - target_sum;
-            sum_count_map.get(&difference).map(|count| result += count);
+            if let Some(count) = sum_count_map.get(&difference) {
+                result += count
+            }
             *sum_count_map.entry(prefix_sum).or_insert(0) += 1;
         }
 

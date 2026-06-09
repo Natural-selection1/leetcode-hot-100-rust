@@ -20,8 +20,10 @@ impl crate::Solution {
 }
 
 fn dfs(node: &Option<Node>, max_path_sum: &mut i32) -> i32 {
-    let Some(node) = node else { return 0 };
-    let node = node.borrow();
+    let node = match node {
+        Some(node) => node.borrow(),
+        None => return 0,
+    };
 
     let l_val = dfs(&node.left, max_path_sum); // 左子树最大链和
     let r_val = dfs(&node.right, max_path_sum); // 右子树最大链和

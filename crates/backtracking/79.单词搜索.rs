@@ -28,7 +28,11 @@ impl crate::Solution {
             .iter()
             .try_fold([0; 128], |mut target_chars_count, &char| {
                 target_chars_count[char] += 1;
-                (target_chars_count[char] <= chars_count[char]).then_some(target_chars_count)
+                if target_chars_count[char] <= chars_count[char] {
+                    Some(target_chars_count)
+                } else {
+                    None
+                }
             })
             .is_none()
         {

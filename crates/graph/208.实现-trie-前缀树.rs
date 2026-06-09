@@ -35,7 +35,7 @@ impl Trie {
     }
 
     pub fn search(&self, target_word: String) -> bool {
-        self.get_node(&target_word).is_some_and(|w| w.is_word)
+        matches!(self.get_node(&target_word), Some(node) if node.is_word)
     }
 
     pub fn starts_with(&self, prefix: String) -> bool {

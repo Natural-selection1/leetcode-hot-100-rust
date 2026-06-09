@@ -45,8 +45,9 @@ impl LRUCache {
     }
 
     fn get(&mut self, key: i32) -> i32 {
-        let Some(&node_ptr) = self.map.get(&key) else {
-            return -1;
+        let node_ptr = match self.map.get(&key) {
+            Some(&node_ptr) => node_ptr,
+            None => return -1,
         };
         // 将节点移动到链表头部
         self.remove_node(node_ptr);
@@ -56,30 +57,33 @@ impl LRUCache {
     }
 
     fn put(&mut self, key: i32, value: i32) {
-        if let Some(&node_ptr) = self.map.get(&key) {
-            let node = node_ptr.as_ptr();
-            unsafe { (*node).value = value }
-            self.remove_node(node_ptr);
-            self.add_to_head(node_ptr);
-        } else {
-            // 创建新节点
-            let node_ptr =
-                unsafe { NonNull::new_unchecked(Box::into_raw(Box::new(Node::new(key, value)))) };
-
-            // 如果容量已满，移除尾部节点
-            if self.map.len() >= self.capacity
-                && let Some(tail_ptr) = self.tail
-            {
-                let tail_key = unsafe { tail_ptr.as_ref().key };
-                self.map.remove(&tail_key);
-                self.remove_node(tail_ptr);
-
-                unsafe { drop(Box::from_raw(tail_ptr.as_ptr())) }
+        match self.map.get(&key) {
+            Some(&node_ptr) => {
+                let node = node_ptr.as_ptr();
+                unsafe { (*node).value = value }
+                self.remove_node(node_ptr);
+                self.add_to_head(node_ptr);
             }
+            None => {
+                // 创建新节点
+                let node_ptr = unsafe {
+                    NonNull::new_unchecked(Box::into_raw(Box::new(Node::new(key, value))))
+                };
 
-            // 添加新节点到头部
-            self.add_to_head(node_ptr);
-            self.map.insert(key, node_ptr);
+                // 如果容量已满，移除尾部节点
+                if self.map.len() >= self.capacity && self.tail.is_some() {
+                    let tail_ptr = self.tail.unwrap();
+                    let tail_key = unsafe { tail_ptr.as_ref().key };
+                    self.map.remove(&tail_key);
+                    self.remove_node(tail_ptr);
+
+                    unsafe { drop(Box::from_raw(tail_ptr.as_ptr())) }
+                }
+
+                // 添加新节点到头部
+                self.add_to_head(node_ptr);
+                self.map.insert(key, node_ptr);
+            }
         }
     }
 
@@ -105,27 +109,25 @@ impl LRUCache {
         }
     }
 
-    // 从链表中移除节点
+    /// 从链表中移除节点
     fn remove_node(&mut self, node_ptr: NonNull<Node>) {
         let node = node_ptr.as_ptr();
         let prev_ptr = unsafe { (*node).prev };
         let next_ptr = unsafe { (*node).next };
 
-        // 更新前节点的next指针
         match prev_ptr {
             Some(prev) => unsafe { (*prev.as_ptr()).next = next_ptr },
-            None => self.head = next_ptr, // 如果移除的是头节点，更新头指针
+            None => self.head = next_ptr,
         }
-        // 更新后节点的prev指针
         match next_ptr {
             Some(next) => unsafe { (*next.as_ptr()).prev = prev_ptr },
-            None => self.tail = prev_ptr, // 如果移除的是尾节点，更新尾指针
+            None => self.tail = prev_ptr,
         }
 
         // 清空当前节点的指针
         unsafe {
             (*node).prev = None;
-            (*node).next = None
+            (*node).next = None;
         }
     }
 }

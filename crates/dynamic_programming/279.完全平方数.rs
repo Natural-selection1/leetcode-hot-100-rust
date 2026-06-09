@@ -7,27 +7,27 @@
 // @lc code=start
 impl crate::Solution {
     // 二维dp
-    pub fn num_squares_(target_num: i32) -> i32 {
+    pub fn num_squares(target_num: i32) -> i32 {
         let target_num = target_num as usize;
         let mut dp = vec![vec![i32::MAX; target_num + 1]; 101];
 
         dp[0][0] = 0;
-        for i in 1..=target_num.isqrt() {
+        for i in 1..=((target_num as f64).sqrt() as usize) {
             for j in 0..=target_num {
-                match j < i.pow(2) {
+                match j < (i * i) {
                     // 来自上一行同列
                     true => dp[i][j] = dp[i - 1][j],
                     // 来自上一行同列 或 当前行但列数减去i的平方
-                    false => dp[i][j] = dp[i - 1][j].min(dp[i][j - i.pow(2)] + 1),
+                    false => dp[i][j] = dp[i - 1][j].min(dp[i][j - (i * i)] + 1),
                 }
             }
         }
 
-        dp[target_num.isqrt()][target_num]
+        dp[(target_num as f64).sqrt() as usize][target_num]
     }
 
     // 一维dp
-    pub fn num_squares(target_num: i32) -> i32 {
+    pub fn num_squares_(target_num: i32) -> i32 {
         let target_num = target_num as usize;
         let mut min_squares_sum: Vec<i32> = (0..=target_num).map(|i| i as i32).collect();
         // 以 12 举例
@@ -38,9 +38,9 @@ impl crate::Solution {
         //
         // 行标从 2, 3 ... target_num.isqrt()
         // 列标只更新从行标的平方开始到target_num
-        for num in 2..=target_num.isqrt() {
-            for i in num.pow(2)..=target_num {
-                min_squares_sum[i] = min_squares_sum[i].min(min_squares_sum[i - num.pow(2)] + 1);
+        for num in 2..=(target_num as f64).sqrt() as usize {
+            for i in (num * num)..=target_num {
+                min_squares_sum[i] = min_squares_sum[i].min(min_squares_sum[i - (num * num)] + 1);
             }
         }
 

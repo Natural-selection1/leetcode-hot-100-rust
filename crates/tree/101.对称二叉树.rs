@@ -12,7 +12,7 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        let Some(root) = root else { unreachable!() };
+        let root = root.unwrap();
         let root = root.borrow();
 
         let mut stack = vec![];
@@ -25,13 +25,14 @@ impl crate::Solution {
 }
 
 fn push_left(node: &Option<Rc<RefCell<TreeNode>>>, stack: &mut Vec<i32>) {
-    let Some(node) = node else {
-        return stack.push(i32::MIN);
+    let node = match node {
+        None => return stack.push(i32::MIN),
+        Some(node) => node.borrow(),
     };
-    let ref_node = node.borrow();
-    push_left(&ref_node.left, stack);
-    push_left(&ref_node.right, stack);
-    stack.push(ref_node.val);
+
+    push_left(&node.left, stack);
+    push_left(&node.right, stack);
+    stack.push(node.val);
 }
 
 fn pop_right(
@@ -42,20 +43,21 @@ fn pop_right(
     if *found_differen {
         return;
     }
-    let Some(node) = node else {
-        return if Some(i32::MIN) != stack.pop() {
-            *found_differen = true;
-        };
+    let node = match node {
+        None => {
+            return if Some(i32::MIN) != stack.pop() {
+                *found_differen = true;
+            }
+        }
+        Some(node) => node.borrow(),
     };
 
-    let ref_node = node.borrow();
     let stack_top = stack.pop();
-    if Some(ref_node.val) != stack_top {
+    if Some(node.val) != stack_top {
         *found_differen = true
     }
 
-    pop_right(&ref_node.left, stack, found_differen);
-    pop_right(&ref_node.right, stack, found_differen);
+    pop_right(&node.left, stack, found_differen);
+    pop_right(&node.right, stack, found_differen);
 }
-
 // @lc code=end

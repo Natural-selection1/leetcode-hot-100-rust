@@ -19,14 +19,15 @@ impl crate::Solution {
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, current_depth: &mut i32, max_depth: &mut i32) {
-    let Some(node) = node else {
-        return *max_depth = *max_depth.max(current_depth);
+    let node = match node {
+        Some(node) => node.borrow(),
+        None => return *max_depth = *max_depth.max(current_depth),
     };
 
     *current_depth += 1;
 
-    dfs(&node.borrow().left, current_depth, max_depth);
-    dfs(&node.borrow().right, current_depth, max_depth);
+    dfs(&node.left, current_depth, max_depth);
+    dfs(&node.right, current_depth, max_depth);
 
     *current_depth -= 1;
 }

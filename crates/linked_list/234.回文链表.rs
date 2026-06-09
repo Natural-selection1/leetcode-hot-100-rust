@@ -12,23 +12,31 @@ impl crate::Solution {
     pub fn is_palindrome_(mut head: Option<Box<ListNode>>) -> bool {
         let mid = middle_node(&head);
         let mut head2 = reverse_list(mid);
-        while let Some(head_node) = head
-            && let Some(head2_node) = head2
-        {
+        while let Some(head_node) = head {
+            let head2_node = match head2 {
+                Some(head2_node) => head2_node,
+                None => break,
+            };
             if head_node.val != head2_node.val {
                 return false;
             }
-            (head, head2) = (head_node.next, head2_node.next);
+
+            head = head_node.next;
+            head2 = head2_node.next;
         }
         true
     }
 
     // 快慢指针: 收集前半段, 比较后半段
     pub fn is_palindrome(head: Option<Box<ListNode>>) -> bool {
-        if head.as_ref().is_none_or(|node| node.next.is_none()) {
+        if match head.as_ref() {
+            None => true,
+            Some(node) if node.next.is_none() => true,
+            Some(_) => false,
+        } {
             return true;
         }
-        #[allow(clippy::unwrap_used, reason = "slow永不为空")]
+
         let mut slow = head.as_ref().unwrap();
         let mut fast = &head;
         let is_odd;
@@ -38,17 +46,16 @@ impl crate::Solution {
             match fast {
                 None => break is_odd = false,
                 Some(node) if node.next.is_none() => break is_odd = true,
-                #[allow(clippy::unwrap_used, reason = "为空的情况已经在上一个分支处理了")]
+
                 Some(node) => fast = &node.next.as_ref().unwrap().next,
             }
             former_half.push(slow);
-            #[allow(clippy::unwrap_used, reason = "slow永不为空")]
+
             {
                 slow = slow.next.as_ref().unwrap();
             }
         }
 
-        #[allow(clippy::unwrap_used, reason = "slow永不为空")]
         is_odd.then(|| slow = slow.next.as_ref().unwrap());
         for node in former_half.iter().rev() {
             if slow.val != node.val {
@@ -67,9 +74,11 @@ impl crate::Solution {
 fn middle_node(head: &Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut fast = head;
     let mut slow = head;
-    while let Some(fast_current) = fast
-        && let Some(fast_next) = &fast_current.next
-    {
+    while let Some(fast_current) = fast {
+        let fast_next = match &fast_current.next {
+            Some(fast_next) => fast_next,
+            None => break,
+        };
         slow = &slow.as_ref()?.next;
         fast = &fast_next.next;
     }

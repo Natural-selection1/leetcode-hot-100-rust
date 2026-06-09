@@ -20,9 +20,7 @@ impl crate::Solution {
                     repeat_times = 0;
                 }
                 b']' => {
-                    let Some((repeat_times, mut exist_buf)) = stack.pop() else {
-                        unreachable!()
-                    };
+                    let (repeat_times, mut exist_buf) = stack.pop().unwrap();
                     exist_buf.extend_from_slice(&string_buf.repeat(repeat_times));
                     string_buf = exist_buf;
                 }

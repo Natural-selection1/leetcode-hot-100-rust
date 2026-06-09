@@ -5,10 +5,10 @@
  */
 
 // @lc code=start
-use crate::TreeNode;
-
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use crate::TreeNode;
 
 impl crate::Solution {
     pub fn diameter_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
@@ -19,8 +19,10 @@ impl crate::Solution {
 }
 
 fn get_max_depth_of_node(node: &Option<Rc<RefCell<TreeNode>>>, max_diameter: &mut i32) -> i32 {
-    let Some(node) = node else { return 0 };
-    let node = node.borrow();
+    let node = match node {
+        Some(node) => node.borrow(),
+        None => return 0,
+    };
 
     let left_max_depth = get_max_depth_of_node(&node.left, max_diameter);
     let right_max_depth = get_max_depth_of_node(&node.right, max_diameter);

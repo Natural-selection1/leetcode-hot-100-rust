@@ -5,17 +5,19 @@
  */
 
 // @lc code=start
+use std::ops::{Add, Div};
+
 impl crate::Solution {
     pub fn find_min(nums: Vec<i32>) -> i32 {
-        let last = nums.last();
+        let last = *nums.last().expect("nums is empty");
         // 左闭右开区间 [0, n-1)
         let mut left = 0;
         let mut right = nums.len() - 1;
 
         while left < right {
-            let mid = left.midpoint(right);
+            let mid = midpoint(left, right);
 
-            match Some(&nums[mid]) < last {
+            match nums[mid] < last {
                 true => right = mid,
                 false => left = mid + 1,
             }
@@ -25,4 +27,10 @@ impl crate::Solution {
     }
 }
 
+fn midpoint<T: Add>(left: T, right: T) -> T
+where
+    <T as Add>::Output: Div<usize, Output = T>,
+{
+    (left + right) / 2
+}
 // @lc code=end

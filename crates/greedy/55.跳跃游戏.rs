@@ -12,9 +12,11 @@ impl crate::Solution {
             .try_fold(
                 0,
                 |furthest_reachable_index, (current_index, jump_distance)| {
-                    (current_index <= furthest_reachable_index).then_some(
-                        furthest_reachable_index.max(current_index + jump_distance as usize),
-                    )
+                    if current_index <= furthest_reachable_index {
+                        Some(furthest_reachable_index.max(current_index + jump_distance as usize))
+                    } else {
+                        None
+                    }
                 },
             )
             .is_some()

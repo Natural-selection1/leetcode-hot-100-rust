@@ -17,7 +17,7 @@ fn dfs(nums: &Vec<i32>, index: usize, used: &mut Vec<bool>, answer: &mut Vec<Vec
     if index == nums.len() {
         return answer.push(
             Iterator::zip(used.iter(), nums)
-                .filter_map(|(&is_used, &num)| is_used.then_some(num))
+                .filter_map(|(&is_used, &num)| if is_used { Some(num) } else { None })
                 .collect(),
         );
     }

@@ -15,7 +15,10 @@ type Node = Rc<RefCell<TreeNode>>;
 
 impl crate::Solution {
     pub fn level_order(root: Option<Node>) -> Vec<Vec<i32>> {
-        let Some(root) = root else { return vec![] };
+        let root = match root {
+            None => return vec![],
+            Some(root) => root,
+        };
         let mut level_order = vec![];
         let mut queue = VecDeque::new();
         queue.push_back(root);
@@ -24,7 +27,6 @@ impl crate::Solution {
             let mut node_in_this_layer = vec![];
 
             for _ in 0..queue.len() {
-                #[allow(clippy::unwrap_used, reason = "queue 非空")]
                 let node = queue.pop_front().unwrap();
                 let mut node = node.borrow_mut();
 
@@ -46,7 +48,7 @@ impl crate::Solution {
 
         while !node_queue.is_empty() {
             let layer_len = node_queue.len();
-            let mut vals = Vec::with_capacity(layer_len); // 预分配空间
+            let mut vals = Vec::with_capacity(layer_len);
 
             for _ in 0..layer_len {
                 if let Some(node) = node_queue.pop_front() {

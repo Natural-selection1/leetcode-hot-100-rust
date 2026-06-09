@@ -15,10 +15,10 @@ impl crate::Solution {
         let mut decreasing_stack = vec![];
 
         for (index, &temperature) in temperatures.iter().enumerate().rev() {
-            while decreasing_stack
-                .pop_if(|last_index| temperature >= temperatures[*last_index])
-                .is_some()
-            {}
+            while matches!(decreasing_stack.last(), Some(&last_index) if temperature >= temperatures[last_index])
+            {
+                decreasing_stack.pop();
+            }
 
             decreasing_stack
                 .last()

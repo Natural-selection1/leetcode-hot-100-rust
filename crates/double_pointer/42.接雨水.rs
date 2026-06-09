@@ -40,19 +40,30 @@ impl crate::Solution {
         // 存下标用来计算宽度
         let mut decreasing_stack: Vec<usize> = Vec::new();
 
-        for (right_index, &height) in heights.iter().enumerate() {
-            // 弹出所有小于等于当前高度的柱子，计算积水
-            while let Some(bottom_index) =
-                decreasing_stack.pop_if(|bottom_index| heights[*bottom_index] <= height)
-            {
-                let bottom_height = heights[bottom_index];
-                let Some(&left_index) = decreasing_stack.last() else {
-                    continue;
-                };
-                let left_height = heights[left_index];
-                let water_height = left_height.min(height) - bottom_height;
-                let water_width = (right_index - left_index - 1) as i32;
-                total_water += water_height * water_width;
+        for (right_index, &right_height) in heights.iter().enumerate() {
+            loop {
+                if matches!(decreasing_stack.last(),
+                    Some(&last_index) if right_height >= heights[last_index])
+                {
+                    let bottom_height = {
+                        let bottom_index = decreasing_stack.pop().unwrap();
+                        heights[bottom_index]
+                    };
+
+                    let left_index = match decreasing_stack.last() {
+                        Some(index) => *index,
+                        None => continue,
+                    };
+
+                    let left_height = heights[left_index];
+                    total_water += {
+                        let water_height = left_height.min(right_height) - bottom_height;
+                        let water_width = (right_index - left_index - 1) as i32;
+                        water_height * water_width
+                    };
+                } else {
+                    break;
+                }
             }
             decreasing_stack.push(right_index);
         }

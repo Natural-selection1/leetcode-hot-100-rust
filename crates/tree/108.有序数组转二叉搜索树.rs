@@ -21,7 +21,7 @@ fn dfs(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
         return None;
     }
 
-    let mid_index = nums.len().midpoint(0);
+    let mid_index = nums.len() / 2;
 
     Some(Rc::new(RefCell::new(TreeNode {
         val: nums[mid_index],
