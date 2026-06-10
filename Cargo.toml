@@ -1,21 +1,5 @@
 [workspace]
 resolver = "1"
 members = [
-    "crates/array",
-    "crates/backtracking",
-    "crates/binary_search",
-    "crates/double_pointer",
-    "crates/dynamic_programming",
-    "crates/graph",
-    "crates/greedy",
-    "crates/hash",
-    "crates/heap",
-    "crates/linked_list",
-    "crates/matrix",
-    "crates/multidim_dp",
-    "crates/skill",
-    "crates/sliding_window",
-    "crates/stack",
-    "crates/sub_sequence",
-    "crates/tree",
+    "crates/*",
 ]
