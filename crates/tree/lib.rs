@@ -31,6 +31,8 @@ mod path_sum;
 mod right_side_view;
 #[path = "108.有序数组转二叉搜索树.rs"]
 mod sorted_array_to_bst;
+#[path = "208.实现-trie-前缀树.rs"]
+mod trie_tree;
 
 // Definition for a binary tree node.
 use std::cell::RefCell;
@@ -44,7 +46,6 @@ pub struct TreeNode {
 }
 
 impl TreeNode {
-    #[inline]
     pub fn new(val: i32) -> Self {
         TreeNode {
             val,
