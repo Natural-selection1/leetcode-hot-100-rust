@@ -34,14 +34,22 @@ impl crate::Solution {
 
     // 递归写法
     pub fn swap_pairs_(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        head.map(|mut first| match first.next {
+        let mut first = head?;
+
+        match first.next {
             Some(mut second) => {
-                first.next = Self::swap_pairs(second.next);
+                let next_group_head = {
+                    let next_group_head = second.next;
+                    Self::swap_pairs(next_group_head)
+                };
+
+                first.next = next_group_head;
                 second.next = Some(first);
-                second
+
+                Some(second)
             }
-            None => first,
-        })
+            None => Some(first),
+        }
     }
 }
 // @lc code=end

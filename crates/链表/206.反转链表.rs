@@ -9,13 +9,13 @@ use crate::ListNode;
 
 impl crate::Solution {
     // 指针迭代
-    pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    pub fn reverse_list_1(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut previous_node = None;
         let mut option_current_node = head;
 
         // 头插法
         while let Some(mut current_node) = option_current_node {
-            let next_node = current_node.next;
+            let next_node = current_node.next.take();
             current_node.next = previous_node;
 
             previous_node = Some(current_node);
@@ -26,7 +26,7 @@ impl crate::Solution {
     }
 
     // 递归写法
-    pub fn reverse_list_(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         reverse(None, head)
     }
 }

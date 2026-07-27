@@ -15,19 +15,19 @@ impl crate::Solution {
             words.insert(string);
         }
 
-        let mut can_build_until = vec![false; string_len + 1];
-        can_build_until[0] = true;
+        let mut dp = vec![false; string_len + 1];
+        dp[0] = true;
 
-        'r_walk: for r_index in 1..=string_len {
-            for l_index in 0..r_index {
-                if words.contains(&raw_string[l_index..r_index]) && can_build_until[l_index] {
-                    can_build_until[r_index] = true;
-                    continue 'r_walk;
+        'r: for r in 1..=string_len {
+            for l in 0..r {
+                if words.contains(&raw_string[l..r]) && dp[l] {
+                    dp[r] = true;
+                    continue 'r;
                 }
             }
         }
 
-        can_build_until[string_len]
+        dp[string_len]
     }
 }
 // @lc code=end

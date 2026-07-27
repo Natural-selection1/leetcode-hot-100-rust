@@ -10,13 +10,13 @@ type Node = Box<ListNode>;
 
 impl crate::Solution {
     pub fn sort_list(head: Option<Node>) -> Option<Node> {
-        if match head.as_ref() {
-            None => true,
-            Some(node) if node.next.is_none() => true,
-            Some(_) => false,
-        } {
-            return head;
+        match head.as_ref() {
+            None => return head,
+            Some(node) if node.next.is_none() => return head,
+            // 至少有两个节点
+            Some(_) => {}
         }
+
         // 模拟归并排序
         let latter_half_head = middle_node(&head);
 
@@ -45,7 +45,7 @@ fn middle_node(head: &Option<Node>) -> Option<Node> {
 fn merge_two_lists(mut list1: Option<Node>, mut list2: Option<Node>) -> Option<Node> {
     let mut dummy = ListNode::new(i32::MIN);
     let mut cur = &mut dummy;
-    while let (Some(node1), Some(node2)) = (&list1, &list2) {
+    while let (Some(node1), Some(node2)) = (list1.as_ref(), list2.as_ref()) {
         match node1.val < node2.val {
             true => {
                 cur.next = list1.take();

@@ -6,4 +6,8 @@ edition = "2018"
 [lib]
 path = "lib.rs"
 
+[[bin]]
+name = "acm_linked_list"
+path = "acm_mode/acm_linked_list.rs"
+
 [dependencies]

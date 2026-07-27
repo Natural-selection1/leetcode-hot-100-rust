@@ -49,7 +49,7 @@ fn compute(
     l2: Option<Box<ListNode>>,
     mut carry: i32,
 ) -> Option<Box<ListNode>> {
-    (l1.is_some() || l2.is_some() || carry != 0).then(|| {
+    if l1.is_some() || l2.is_some() || carry != 0 {
         let l1 = l1.and_then(|node| {
             carry += node.val;
             node.next
@@ -60,10 +60,12 @@ fn compute(
             node.next
         });
 
-        Box::new(ListNode {
-            next: compute(l1, l2, carry / 10),
+        Some(Box::new(ListNode {
             val: carry % 10,
-        })
-    })
+            next: compute(l1, l2, carry / 10),
+        }))
+    } else {
+        None
+    }
 }
 // @lc code=end

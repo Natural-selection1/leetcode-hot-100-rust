@@ -27,7 +27,7 @@ impl crate::Solution {
 
         #[allow(mutable_transmutes)]
         let left: &mut ListNode = unsafe { std::mem::transmute(left) };
-        left.next = left.next.take()?.next;
+        left.next = left.next.take()?.next.take();
 
         dummy.next
     }

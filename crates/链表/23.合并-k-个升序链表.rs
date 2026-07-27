@@ -26,17 +26,20 @@ impl PartialOrd for ListNode {
 
 impl crate::Solution {
     pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
-        let mut dummy = Box::new(ListNode::new(0));
+        let mut dummy = ListNode::new(0);
         let mut current = &mut dummy;
         let mut min_heap = BinaryHeap::new();
 
+        // 维护K个列表头结点的小顶堆
         lists
             .into_iter()
             .flatten()
             .for_each(|node| min_heap.push(Reverse(node)));
 
         while let Some(Reverse(mut node)) = min_heap.pop() {
-            node.next.take().map(|next| min_heap.push(Reverse(next)));
+            if let Some(next) = node.next.take() {
+                min_heap.push(Reverse(next))
+            };
             current.next = Some(node);
             current = current.next.as_mut()?;
         }
