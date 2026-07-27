@@ -45,9 +45,10 @@ fn pop_right(
     }
     let node = match node {
         None => {
-            return if Some(i32::MIN) != stack.pop() {
+            if Some(i32::MIN) != stack.pop() {
                 *found_differen = true;
             }
+            return;
         }
         Some(node) => node.borrow(),
     };

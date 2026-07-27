@@ -21,7 +21,10 @@ impl crate::Solution {
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, current_depth: &mut i32, max_depth: &mut i32) {
     let node = match node {
         Some(node) => node.borrow(),
-        None => return *max_depth = *max_depth.max(current_depth),
+        None => {
+            *max_depth = Ord::max(*max_depth, *current_depth);
+            return;
+        }
     };
 
     *current_depth += 1;

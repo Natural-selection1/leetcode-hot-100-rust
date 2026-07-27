@@ -9,32 +9,38 @@ use crate::TreeNode;
 
 use std::cell::RefCell;
 use std::rc::Rc;
-type Node = Rc<RefCell<TreeNode>>;
+use std::unreachable;
 
 impl crate::Solution {
     pub fn lowest_common_ancestor(
-        root: Option<Node>,
-        node_1: Option<Node>,
-        node_2: Option<Node>,
-    ) -> Option<Node> {
-        if root == node_1 || root == node_2 {
-            return root;
-        }
-        let root = root?;
-        let root_left = root.borrow_mut().left.take();
-        let root_right = root.borrow_mut().right.take();
+        root: Option<Rc<RefCell<TreeNode>>>,
+        node_1: Option<Rc<RefCell<TreeNode>>>,
+        node_2: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        dfs(root, node_1.unwrap(), node_2.unwrap())
+    }
+}
 
-        let left = Self::lowest_common_ancestor(root_left, node_1.clone(), node_2.clone());
-        let right = Self::lowest_common_ancestor(root_right, node_1, node_2);
+fn dfs(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    node_1: Rc<RefCell<TreeNode>>,
+    node_2: Rc<RefCell<TreeNode>>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    let root = root?;
 
-        match (left, right) {
-            // 都没有找到，就返回 None
-            (None, None) => None,
-            // 左右都找到, 当前节点是最近公共祖先
-            (Some(_), Some(_)) => Some(root),
-            // 如果只有单边找到，就返回那一边的返回值
-            (None, Some(node)) | (Some(node), None) => Some(node),
-        }
+    let root_left = root.borrow_mut().left.take();
+    let root_right = root.borrow_mut().right.take();
+
+    let left = dfs(root_left, node_1.clone(), node_2.clone());
+    let right = dfs(root_right, node_1.clone(), node_2.clone());
+
+    match (left, right, (root == node_1 || root == node_2)) {
+        (None, None, false) => None,
+        (None, None, true) => Some(root),
+        (Some(_), Some(_), false) => Some(root),
+        (Some(_), None, true) | (None, Some(_), true) => Some(root),
+        (node @ Some(_), None, false) | (None, node @ Some(_), false) => node,
+        (Some(_), Some(_), true) => unreachable!(),
     }
 }
 // @lc code=end

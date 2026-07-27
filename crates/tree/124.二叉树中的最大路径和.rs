@@ -9,17 +9,16 @@ use crate::TreeNode;
 
 use std::cell::RefCell;
 use std::rc::Rc;
-type Node = Rc<RefCell<TreeNode>>;
 
 impl crate::Solution {
-    pub fn max_path_sum(root: Option<Node>) -> i32 {
+    pub fn max_path_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         let mut max_path_sum = i32::MIN;
         dfs(&root, &mut max_path_sum);
         max_path_sum
     }
 }
 
-fn dfs(node: &Option<Node>, max_path_sum: &mut i32) -> i32 {
+fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, max_path_sum: &mut i32) -> i32 {
     let node = match node {
         Some(node) => node.borrow(),
         None => return 0,

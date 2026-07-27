@@ -11,10 +11,9 @@ use crate::TreeNode;
 use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::rc::Rc;
-type Node = Rc<RefCell<TreeNode>>;
 
 impl crate::Solution {
-    pub fn level_order(root: Option<Node>) -> Vec<Vec<i32>> {
+    pub fn level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
         let root = match root {
             None => return vec![],
             Some(root) => root,
@@ -38,33 +37,6 @@ impl crate::Solution {
         }
 
         level_order
-    }
-
-    pub fn level_order_(root: Option<Node>) -> Vec<Vec<i32>> {
-        let mut answer = vec![];
-        let mut node_queue = VecDeque::new();
-
-        root.map(|node| node_queue.push_back(node));
-
-        while !node_queue.is_empty() {
-            let layer_len = node_queue.len();
-            let mut vals = Vec::with_capacity(layer_len);
-
-            for _ in 0..layer_len {
-                if let Some(node) = node_queue.pop_front() {
-                    let mut x = node.borrow_mut();
-                    vals.push(x.val);
-                    if let Some(left) = x.left.take() {
-                        node_queue.push_back(left);
-                    }
-                    if let Some(right) = x.right.take() {
-                        node_queue.push_back(right);
-                    }
-                }
-            }
-            answer.push(vals);
-        }
-        answer
     }
 }
 
