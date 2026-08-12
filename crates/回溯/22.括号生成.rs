@@ -7,18 +7,55 @@
 // @lc code=start
 impl crate::Solution {
     pub fn generate_parenthesis(size: i32) -> Vec<String> {
-        let mut result = vec![];
-        let size = size as usize;
-        backtracing(
-            size,
-            0,
-            0,
-            &mut String::with_capacity(2 * size),
-            &mut result,
-        );
-        result
+        todo!()
     }
 }
+fn backtracing(
+    size: usize,
+    used_left: usize,
+    used_right: usize,
+    temp_answer: &mut String,
+    answer: &mut Vec<String>,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn generate_parenthesis(size: i32) -> Vec<String> {
+    let mut result = vec![];
+    let size = size as usize;
+    backtracing(
+        size,
+        0,
+        0,
+        &mut String::with_capacity(2 * size),
+        &mut result,
+    );
+    result
+}
+
 fn backtracing(
     size: usize,
     used_left: usize,
@@ -42,4 +79,5 @@ fn backtracing(
         temp_answer.pop();
     }
 }
-// @lc code=end
+
+*/

@@ -7,58 +7,97 @@
 // @lc code=start
 impl crate::Solution {
     pub fn exist(board: Vec<Vec<char>>, target_word: String) -> bool {
-        // 预处理, 转成usize方便后续计算
-        let mut board: Vec<Vec<usize>> = board
-            .into_iter()
-            .map(|row| row.into_iter().map(|char| char as usize).collect())
-            .collect();
-        let mut target_word: Vec<usize> = target_word.chars().map(|char| char as usize).collect();
+        todo!()
+    }
+}
 
-        // 统计每个字符出现的次数, 以进行剪枝
-        let chars_count = board
-            .iter()
-            .flatten()
-            .fold([0; 128], |mut chars_count, &char| {
-                chars_count[char] += 1;
-                chars_count
-            });
+fn dfs(
+    board: &mut Vec<Vec<usize>>,
+    target_word: &[usize],
+    i: usize,
+    j: usize,
+    already_found: usize,
+    row_count: usize,
+    col_count: usize,
+) -> bool {
+    todo!()
+}
+// @lc code=end
 
-        // 可行性剪枝: 检查 target_word 是否有字符数目超了
-        if target_word
-            .iter()
-            .try_fold([0; 128], |mut target_chars_count, &char| {
-                target_chars_count[char] += 1;
-                if target_chars_count[char] <= chars_count[char] {
-                    Some(target_chars_count)
-                } else {
-                    None
-                }
-            })
-            .is_none()
-        {
-            return false;
-        }
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
 
-        // 顺序剪枝: 优先搜索出现次数更少的字符
-        if Iterator::zip(target_word.iter(), target_word.iter().rev())
-            .take(target_word.len() / 2)
-            .any(|(&l, &r)| chars_count[l] > chars_count[r])
-        {
-            target_word.reverse();
-        }
+pub fn exist(board: Vec<Vec<char>>, target_word: String) -> bool {
+    // 预处理, 转成usize方便后续计算
+    let mut board: Vec<Vec<usize>> = board
+        .into_iter()
+        .map(|row| row.into_iter().map(|char| char as usize).collect())
+        .collect();
+    let mut target_word: Vec<usize> = target_word.chars().map(|char| char as usize).collect();
 
-        let row_count = board.len();
-        let col_count = board[0].len();
-        for i in 0..row_count {
-            for j in 0..col_count {
-                if dfs(&mut board, &target_word, i, j, 0, row_count, col_count) {
-                    return true;
-                }
+    // 统计每个字符出现的次数, 以进行剪枝
+    let chars_count = board
+        .iter()
+        .flatten()
+        .fold([0; 128], |mut chars_count, &char| {
+            chars_count[char] += 1;
+            chars_count
+        });
+
+    // 可行性剪枝: 检查 target_word 是否有字符数目超了
+    if target_word
+        .iter()
+        .try_fold([0; 128], |mut target_chars_count, &char| {
+            target_chars_count[char] += 1;
+            if target_chars_count[char] <= chars_count[char] {
+                Some(target_chars_count)
+            } else {
+                None
+            }
+        })
+        .is_none()
+    {
+        return false;
+    }
+
+    // 顺序剪枝: 优先搜索出现次数更少的字符
+    if Iterator::zip(target_word.iter(), target_word.iter().rev())
+        .take(target_word.len() / 2)
+        .any(|(&l, &r)| chars_count[l] > chars_count[r])
+    {
+        target_word.reverse();
+    }
+
+    let row_count = board.len();
+    let col_count = board[0].len();
+    for i in 0..row_count {
+        for j in 0..col_count {
+            if dfs(&mut board, &target_word, i, j, 0, row_count, col_count) {
+                return true;
             }
         }
-
-        false
     }
+
+    false
 }
 
 fn dfs(
@@ -98,4 +137,5 @@ fn dfs(
 
     false
 }
-// @lc code=end
+
+*/

@@ -7,10 +7,46 @@
 // @lc code=start
 impl crate::Solution {
     pub fn partition(raw_string: String) -> Vec<Vec<String>> {
-        let mut answer = vec![];
-        backtracking(&raw_string, 0, &mut vec![], &mut answer);
-        answer
+        todo!()
     }
+}
+
+fn backtracking(
+    raw_string: &str,
+    index: usize,
+    path: &mut Vec<String>,
+    answer: &mut Vec<Vec<String>>,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn partition(raw_string: String) -> Vec<Vec<String>> {
+    let mut answer = vec![];
+    backtracking(&raw_string, 0, &mut vec![], &mut answer);
+    answer
 }
 
 fn backtracking(
@@ -33,4 +69,5 @@ fn backtracking(
         }
     }
 }
-// @lc code=end
+
+*/

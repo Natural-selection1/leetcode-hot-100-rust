@@ -9,34 +9,71 @@ use std::collections::HashMap;
 
 impl crate::Solution {
     pub fn letter_combinations(digits: String) -> Vec<String> {
-        if digits.is_empty() {
-            return vec![];
-        }
-
-        let mut answer = vec![];
-        let num_chars_map: HashMap<char, Vec<char>> = {
-            let mut map = HashMap::new();
-            map.insert('2', vec!['a', 'b', 'c']);
-            map.insert('3', vec!['d', 'e', 'f']);
-            map.insert('4', vec!['g', 'h', 'i']);
-            map.insert('5', vec!['j', 'k', 'l']);
-            map.insert('6', vec!['m', 'n', 'o']);
-            map.insert('7', vec!['p', 'q', 'r', 's']);
-            map.insert('8', vec!['t', 'u', 'v']);
-            map.insert('9', vec!['w', 'x', 'y', 'z']);
-            map
-        };
-
-        dfs(
-            &mut answer,
-            &mut vec![],
-            0,
-            &digits.chars().collect(),
-            &num_chars_map,
-        );
-
-        answer
+        todo!()
     }
+}
+
+fn dfs(
+    answer: &mut Vec<String>,
+    current_chars: &mut Vec<char>,
+    index: usize,
+    digits: &Vec<char>,
+    num_chars_map: &HashMap<char, Vec<char>>,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn letter_combinations(digits: String) -> Vec<String> {
+    if digits.is_empty() {
+        return vec![];
+    }
+
+    let mut answer = vec![];
+    let num_chars_map: HashMap<char, Vec<char>> = {
+        let mut map = HashMap::new();
+        map.insert('2', vec!['a', 'b', 'c']);
+        map.insert('3', vec!['d', 'e', 'f']);
+        map.insert('4', vec!['g', 'h', 'i']);
+        map.insert('5', vec!['j', 'k', 'l']);
+        map.insert('6', vec!['m', 'n', 'o']);
+        map.insert('7', vec!['p', 'q', 'r', 's']);
+        map.insert('8', vec!['t', 'u', 'v']);
+        map.insert('9', vec!['w', 'x', 'y', 'z']);
+        map
+    };
+
+    dfs(
+        &mut answer,
+        &mut vec![],
+        0,
+        &digits.chars().collect(),
+        &num_chars_map,
+    );
+
+    answer
 }
 
 fn dfs(
@@ -56,4 +93,5 @@ fn dfs(
         current_chars.pop();
     }
 }
-// @lc code=end
+
+*/

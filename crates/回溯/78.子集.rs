@@ -7,10 +7,41 @@
 // @lc code=start
 impl crate::Solution {
     pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut answer = vec![];
-        dfs(&nums, 0, &mut vec![false; nums.len()], &mut answer);
-        answer
+        todo!()
     }
+}
+
+fn dfs(nums: &Vec<i32>, index: usize, used: &mut Vec<bool>, answer: &mut Vec<Vec<i32>>) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
+    let mut answer = vec![];
+    dfs(&nums, 0, &mut vec![false; nums.len()], &mut answer);
+    answer
 }
 
 fn dfs(nums: &Vec<i32>, index: usize, used: &mut Vec<bool>, answer: &mut Vec<Vec<i32>>) {
@@ -29,4 +60,5 @@ fn dfs(nums: &Vec<i32>, index: usize, used: &mut Vec<bool>, answer: &mut Vec<Vec
 
     dfs(nums, index + 1, used, answer);
 }
-// @lc code=end
+
+*/

@@ -11,11 +11,46 @@ type Vec2D<T> = Vec<Vec<T>>;
 
 impl crate::Solution {
     pub fn solve_n_queens(size: i32) -> Vec2D<String> {
-        let size = size as usize;
-        let mut result = vec![];
-        dfs(0, size, &mut vec![vec![EMPTY; size]; size], &mut result);
-        result
+        todo!()
     }
+}
+
+fn dfs(row: usize, size: usize, chessboard: &mut Vec2D<char>, result: &mut Vec2D<String>) {
+    todo!()
+}
+
+fn is_valid(row: usize, col: usize, chessboard: &Vec2D<char>) -> bool {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn solve_n_queens(size: i32) -> Vec2D<String> {
+    let size = size as usize;
+    let mut result = vec![];
+    dfs(0, size, &mut vec![vec![EMPTY; size]; size], &mut result);
+    result
 }
 
 fn dfs(row: usize, size: usize, chessboard: &mut Vec2D<char>, result: &mut Vec2D<String>) {
@@ -41,4 +76,5 @@ fn is_valid(row: usize, col: usize, chessboard: &Vec2D<char>) -> bool {
         && (1..=row.min(chessboard.len() - 1 - col))
             .all(|step| chessboard[row - step][col + step] != QUEEN)
 }
-// @lc code=end
+
+*/

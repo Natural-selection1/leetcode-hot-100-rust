@@ -9,19 +9,63 @@
 impl crate::Solution {
     // used 数组
     pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut result: Vec<Vec<i32>> = Vec::new();
-        let mut path: Vec<i32> = Vec::new();
-        let mut used = vec![false; nums.len()];
-        backtracking(&mut result, &mut path, &nums, &mut used);
-        result
+        todo!()
     }
 
     // 原地修改
     pub fn permute_(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut full_permutation: Vec<Vec<i32>> = Vec::new();
-        dfs(0, &mut nums, &mut full_permutation);
-        full_permutation
+        todo!()
     }
+}
+
+fn backtracking(
+    result: &mut Vec<Vec<i32>>,
+    path: &mut Vec<i32>,
+    nums: &Vec<i32>,
+    used: &mut Vec<bool>,
+) {
+    todo!()
+}
+
+fn dfs(first: usize, nums: &mut Vec<i32>, full_permutation: &mut Vec<Vec<i32>>) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
+    let mut result: Vec<Vec<i32>> = Vec::new();
+    let mut path: Vec<i32> = Vec::new();
+    let mut used = vec![false; nums.len()];
+    backtracking(&mut result, &mut path, &nums, &mut used);
+    result
+}
+
+pub fn permute_(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    let mut full_permutation: Vec<Vec<i32>> = Vec::new();
+    dfs(0, &mut nums, &mut full_permutation);
+    full_permutation
 }
 
 fn backtracking(
@@ -58,4 +102,5 @@ fn dfs(first: usize, nums: &mut Vec<i32>, full_permutation: &mut Vec<Vec<i32>>) 
         nums.swap(first, i);
     }
 }
-// @lc code=end
+
+*/

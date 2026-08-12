@@ -7,11 +7,48 @@
 // @lc code=start
 impl crate::Solution {
     pub fn combination_sum(mut candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
-        candidates.sort_unstable();
-        let mut answer = Vec::new();
-        dfs(0, target, &candidates, &mut vec![], &mut answer);
-        answer
+        todo!()
     }
+}
+
+fn dfs(
+    index: usize,
+    target: i32,
+    candidates: &Vec<i32>,
+    temp_answer_vec: &mut Vec<i32>,
+    answer: &mut Vec<Vec<i32>>,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn combination_sum(mut candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
+    candidates.sort_unstable();
+    let mut answer = Vec::new();
+    dfs(0, target, &candidates, &mut vec![], &mut answer);
+    answer
 }
 
 fn dfs(
@@ -34,4 +71,5 @@ fn dfs(
         temp_answer_vec.pop();
     }
 }
-// @lc code=end
+
+*/
