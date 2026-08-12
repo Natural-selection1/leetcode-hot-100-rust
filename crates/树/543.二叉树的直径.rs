@@ -12,10 +12,41 @@ use crate::TreeNode;
 
 impl crate::Solution {
     pub fn diameter_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let mut max_diameter = 0;
-        get_max_depth_of_node(&root, &mut max_diameter);
-        max_diameter
+        todo!()
     }
+}
+
+fn get_max_depth_of_node(node: &Option<Rc<RefCell<TreeNode>>>, max_diameter: &mut i32) -> i32 {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn diameter_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    let mut max_diameter = 0;
+    get_max_depth_of_node(&root, &mut max_diameter);
+    max_diameter
 }
 
 fn get_max_depth_of_node(node: &Option<Rc<RefCell<TreeNode>>>, max_diameter: &mut i32) -> i32 {
@@ -31,4 +62,5 @@ fn get_max_depth_of_node(node: &Option<Rc<RefCell<TreeNode>>>, max_diameter: &mu
 
     left_max_depth.max(right_max_depth) + 1
 }
-// @lc code=end
+
+*/

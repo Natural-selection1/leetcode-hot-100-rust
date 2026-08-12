@@ -12,10 +12,41 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        let mut answer = vec![];
-        dfs(&root, &mut answer);
-        answer
+        todo!()
     }
+}
+
+fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, answer: &mut Vec<i32>) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    let mut answer = vec![];
+    dfs(&root, &mut answer);
+    answer
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, answer: &mut Vec<i32>) {
@@ -28,4 +59,5 @@ fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, answer: &mut Vec<i32>) {
     answer.push(node.val);
     dfs(&node.right, answer);
 }
-// @lc code=end
+
+*/

@@ -12,10 +12,41 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn kth_smallest(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
-        let mut target_num = i32::MIN;
-        mid_order_def(&root, &mut -k, &mut target_num);
-        target_num
+        todo!()
     }
+}
+
+fn mid_order_def(node: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32, target_num: &mut i32) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn kth_smallest(root: Option<Rc<RefCell<TreeNode>>>, k: i32) -> i32 {
+    let mut target_num = i32::MIN;
+    mid_order_def(&root, &mut -k, &mut target_num);
+    target_num
 }
 
 fn mid_order_def(node: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32, target_num: &mut i32) {
@@ -34,4 +65,5 @@ fn mid_order_def(node: &Option<Rc<RefCell<TreeNode>>>, count: &mut i32, target_n
     }
     mid_order_def(&node.right, count, target_num);
 }
-// @lc code=end
+
+*/

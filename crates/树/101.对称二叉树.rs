@@ -12,16 +12,55 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        let root = root.unwrap();
-        let root = root.borrow();
-
-        let mut stack = vec![];
-        let mut found_differen = false;
-        push_left(&root.left, &mut stack);
-        pop_right(&root.right, &mut stack, &mut found_differen);
-
-        !found_differen
+        todo!()
     }
+}
+
+fn push_left(node: &Option<Rc<RefCell<TreeNode>>>, stack: &mut Vec<i32>) {
+    todo!()
+}
+
+fn pop_right(
+    node: &Option<Rc<RefCell<TreeNode>>>,
+    stack: &mut Vec<i32>,
+    found_differen: &mut bool,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    let root = root.unwrap();
+    let root = root.borrow();
+
+    let mut stack = vec![];
+    let mut found_differen = false;
+    push_left(&root.left, &mut stack);
+    pop_right(&root.right, &mut stack, &mut found_differen);
+
+    !found_differen
 }
 
 fn push_left(node: &Option<Rc<RefCell<TreeNode>>>, stack: &mut Vec<i32>) {
@@ -61,4 +100,5 @@ fn pop_right(
     pop_right(&node.left, stack, found_differen);
     pop_right(&node.right, stack, found_differen);
 }
-// @lc code=end
+
+*/

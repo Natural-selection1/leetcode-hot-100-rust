@@ -12,8 +12,39 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn sorted_array_to_bst(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
-        dfs(&nums)
+        todo!()
     }
+}
+
+fn dfs(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn sorted_array_to_bst(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    dfs(&nums)
 }
 
 fn dfs(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
@@ -29,4 +60,5 @@ fn dfs(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
         right: dfs(&nums[mid_index + 1..]),
     })))
 }
-// @lc code=end
+
+*/

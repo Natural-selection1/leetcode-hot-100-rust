@@ -13,14 +13,52 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn build_tree(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
-        let inorder_val_index_map = inorder
-            .iter()
-            .enumerate()
-            .map(|(index, &val)| (val, index))
-            .collect();
-
-        dfs(0, preorder.len(), 0, &preorder, &inorder_val_index_map)
+        todo!()
     }
+}
+
+fn dfs(
+    root_preorder_index: usize,
+    r_preorder_boundary: usize,
+    l_inorder_boundary: usize, // * 用来算左子树长度的
+    preorder: &[i32],
+    inorder_val_index_map: &HashMap<i32, usize>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    todo!()
+}
+
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn build_tree(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    let inorder_val_index_map = inorder
+        .iter()
+        .enumerate()
+        .map(|(index, &val)| (val, index))
+        .collect();
+
+    dfs(0, preorder.len(), 0, &preorder, &inorder_val_index_map)
 }
 
 fn dfs(
@@ -62,4 +100,4 @@ fn dfs(
     })))
 }
 
-// @lc code=end
+*/

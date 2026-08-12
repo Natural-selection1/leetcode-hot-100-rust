@@ -12,10 +12,41 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let mut max_depth = 0;
-        dfs(&root, &mut 0, &mut max_depth);
-        max_depth
+        todo!()
     }
+}
+
+fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, current_depth: &mut i32, max_depth: &mut i32) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    let mut max_depth = 0;
+    dfs(&root, &mut 0, &mut max_depth);
+    max_depth
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, current_depth: &mut i32, max_depth: &mut i32) {
@@ -34,4 +65,5 @@ fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, current_depth: &mut i32, max_depth:
 
     *current_depth -= 1;
 }
-// @lc code=end
+
+*/

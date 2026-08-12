@@ -12,9 +12,44 @@ use crate::TreeNode;
 
 impl crate::Solution {
     pub fn flatten(root: &mut Option<Rc<RefCell<TreeNode>>>) {
-        dfs_1(root);
-        // dfs_2(root, &mut None);
+        todo!()
     }
+}
+
+fn dfs_1(root: &mut Option<Rc<RefCell<TreeNode>>>) {
+    todo!()
+}
+
+fn dfs_2(root: &Option<Rc<RefCell<TreeNode>>>, head: &mut Option<Rc<RefCell<TreeNode>>>) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn flatten(root: &mut Option<Rc<RefCell<TreeNode>>>) {
+    dfs_1(root);
+    // dfs_2(root, &mut None);
 }
 
 fn dfs_1(root: &mut Option<Rc<RefCell<TreeNode>>>) {
@@ -64,4 +99,5 @@ fn dfs_2(root: &Option<Rc<RefCell<TreeNode>>>, head: &mut Option<Rc<RefCell<Tree
     current_node.right = head.take(); // 头插法
     *head = root.clone(); // 现在链表头节点是 node
 }
-// @lc code=end
+
+*/

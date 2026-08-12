@@ -9,7 +9,7 @@ use crate::TreeNode;
 
 use std::cell::RefCell;
 use std::rc::Rc;
-use std::unreachable;
+
 
 impl crate::Solution {
     pub fn lowest_common_ancestor(
@@ -17,8 +17,47 @@ impl crate::Solution {
         node_1: Option<Rc<RefCell<TreeNode>>>,
         node_2: Option<Rc<RefCell<TreeNode>>>,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        dfs(root, node_1.unwrap(), node_2.unwrap())
+        todo!()
     }
+}
+
+fn dfs(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    node_1: Rc<RefCell<TreeNode>>,
+    node_2: Rc<RefCell<TreeNode>>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn lowest_common_ancestor(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    node_1: Option<Rc<RefCell<TreeNode>>>,
+    node_2: Option<Rc<RefCell<TreeNode>>>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    dfs(root, node_1.unwrap(), node_2.unwrap())
 }
 
 fn dfs(
@@ -43,4 +82,5 @@ fn dfs(
         (Some(_), Some(_), true) => unreachable!(),
     }
 }
-// @lc code=end
+
+*/

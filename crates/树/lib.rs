@@ -46,12 +46,40 @@ pub struct TreeNode {
 
 impl TreeNode {
     pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
+        todo!()
     }
 }
 
 struct Solution;
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn new(val: i32) -> Self {
+    TreeNode {
+        val,
+        left: None,
+        right: None,
+    }
+}
+
+*/

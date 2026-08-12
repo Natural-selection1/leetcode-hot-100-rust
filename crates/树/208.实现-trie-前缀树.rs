@@ -71,47 +71,87 @@ struct TrieNode {
  */
 impl Trie {
     fn new() -> Self {
-        Self {
-            trie_node: TrieNode::default(),
-        }
+        todo!()
     }
 
     fn insert(&mut self, word: String) {
-        let word = word.chars();
-        let mut node = &mut self.trie_node;
-
-        for char in word {
-            node = node.trie_node.entry(char).or_default()
-        }
-        node.is_word = true;
+        todo!()
     }
 
     fn search(&self, word: String) -> bool {
-        let word = word.chars();
-        let mut node = &self.trie_node;
-
-        for char in word {
-            match node.trie_node.get(&char) {
-                Some(next_node) => node = next_node,
-                None => return false,
-            }
-        }
-        node.is_word
+        todo!()
     }
 
     fn starts_with(&self, prefix: String) -> bool {
-        let word = prefix.chars();
-        let mut node = &self.trie_node;
-
-        for char in word {
-            match node.trie_node.get(&char) {
-                Some(next_node) => node = next_node,
-                None => return false,
-            }
-        }
-
-        true
+        todo!()
     }
 }
 
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+fn new() -> Self {
+    Self {
+        trie_node: TrieNode::default(),
+    }
+}
+
+fn insert(&mut self, word: String) {
+    let word = word.chars();
+    let mut node = &mut self.trie_node;
+
+    for char in word {
+        node = node.trie_node.entry(char).or_default()
+    }
+    node.is_word = true;
+}
+
+fn search(&self, word: String) -> bool {
+    let word = word.chars();
+    let mut node = &self.trie_node;
+
+    for char in word {
+        match node.trie_node.get(&char) {
+            Some(next_node) => node = next_node,
+            None => return false,
+        }
+    }
+    node.is_word
+}
+
+fn starts_with(&self, prefix: String) -> bool {
+    let word = prefix.chars();
+    let mut node = &self.trie_node;
+
+    for char in word {
+        match node.trie_node.get(&char) {
+            Some(next_node) => node = next_node,
+            None => return false,
+        }
+    }
+
+    true
+}
+
+*/

@@ -13,14 +13,58 @@ use std::rc::Rc;
 // 两种递归写法
 impl crate::Solution {
     pub fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        let mut is_valid = true;
-        dfs(&root, i64::MIN, i64::MAX, &mut is_valid);
-        is_valid
+        todo!()
     }
 
     pub fn is_valid_bst_(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        dfs_(&root, i64::MIN, i64::MAX)
+        todo!()
     }
+}
+
+fn dfs(
+    node: &Option<Rc<RefCell<TreeNode>>>,
+    left_boundary: i64,
+    right_boundary: i64,
+    is_valid: &mut bool,
+) {
+    todo!()
+}
+
+fn dfs_(node: &Option<Rc<RefCell<TreeNode>>>, left_boundary: i64, right_boundary: i64) -> bool {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    let mut is_valid = true;
+    dfs(&root, i64::MIN, i64::MAX, &mut is_valid);
+    is_valid
+}
+
+pub fn is_valid_bst_(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    dfs_(&root, i64::MIN, i64::MAX)
 }
 
 fn dfs(
@@ -56,4 +100,5 @@ fn dfs_(node: &Option<Rc<RefCell<TreeNode>>>, left_boundary: i64, right_boundary
         && dfs_(&node.left, left_boundary, node_val)
         && dfs_(&node.right, node_val, right_boundary)
 }
-// @lc code=end
+
+*/

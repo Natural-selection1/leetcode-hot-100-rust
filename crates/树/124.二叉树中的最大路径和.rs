@@ -12,10 +12,41 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn max_path_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let mut max_path_sum = i32::MIN;
-        dfs(&root, &mut max_path_sum);
-        max_path_sum
+        todo!()
     }
+}
+
+fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, max_path_sum: &mut i32) -> i32 {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn max_path_sum(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    let mut max_path_sum = i32::MIN;
+    dfs(&root, &mut max_path_sum);
+    max_path_sum
 }
 
 fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, max_path_sum: &mut i32) -> i32 {
@@ -30,4 +61,5 @@ fn dfs(node: &Option<Rc<RefCell<TreeNode>>>, max_path_sum: &mut i32) -> i32 {
 
     Ord::max(l_val.max(r_val) + node.val, 0)
 }
-// @lc code=end
+
+*/

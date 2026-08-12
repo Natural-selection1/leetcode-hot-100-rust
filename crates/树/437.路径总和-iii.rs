@@ -14,20 +14,57 @@ use std::rc::Rc;
 
 impl crate::Solution {
     pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
-        let mut answer = 0;
-        let mut sum_count_map = HashMap::with_capacity(1000);
-        sum_count_map.insert(0, 1);
-
-        dfs(
-            &root,
-            target_sum.into(),
-            &mut sum_count_map,
-            &mut 0,
-            &mut answer,
-        );
-
-        answer
+        todo!()
     }
+}
+
+fn dfs(
+    node: &Option<Rc<RefCell<TreeNode>>>,
+    target_sum: i64,
+    sum_count_map: &mut HashMap<i64, i32>,
+    prefix_sum: &mut i64,
+    answer: &mut i32,
+) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
+    let mut answer = 0;
+    let mut sum_count_map = HashMap::with_capacity(1000);
+    sum_count_map.insert(0, 1);
+
+    dfs(
+        &root,
+        target_sum.into(),
+        &mut sum_count_map,
+        &mut 0,
+        &mut answer,
+    );
+
+    answer
 }
 
 fn dfs(
@@ -56,4 +93,5 @@ fn dfs(
         .and_modify(|count| *count -= 1);
     *prefix_sum -= node.val as i64;
 }
-// @lc code=end
+
+*/
