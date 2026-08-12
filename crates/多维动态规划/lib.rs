@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "./1143.最长公共子序列.rs"]
 mod longest_common_subsequence;

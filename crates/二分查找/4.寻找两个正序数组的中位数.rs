@@ -16,7 +16,7 @@ impl crate::Solution {
 
         let total_len = shorter_len + longer_len;
         //  向上取整, 即个数为奇数时, 选择让左侧多一个
-        let half_total_len = (total_len + 1) / 2;
+        let half_total_len = total_len.div_ceil(2);
         // 左闭右开区间 [left, right)
         let mut shorter_left = 0;
         let mut shorter_right = shorter_len;
@@ -52,7 +52,7 @@ impl crate::Solution {
         let right_min = right_min_1.min(right_min_2);
 
         // 根据总长度的奇偶性返回中位数
-        match total_len % 2 == 0 {
+        match total_len.is_multiple_of(2) {
             true => (left_max + right_min) as f64 / 2.0,
             false => left_max as f64,
         }

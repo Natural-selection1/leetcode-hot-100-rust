@@ -6,7 +6,6 @@
 
 // @lc code=start
 impl crate::Solution {
-    // #[rustfmt::skip]
     pub fn climb_stairs(times: i32) -> i32 {
         (1..=times)
             .fold(

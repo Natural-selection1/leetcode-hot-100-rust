@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    fn merge_sort(mut nums: Vec<i32>) -> Vec<i32> {
+    fn merge_sort(nums: Vec<i32>) -> Vec<i32> {
         if nums.len() <= 1 {
             return nums;
         }
@@ -16,7 +16,7 @@ impl Solution {
     }
 }
 
-fn merge_two_sorted_vec(mut left: Vec<i32>, mut right: Vec<i32>) -> Vec<i32> {
+fn merge_two_sorted_vec(left: Vec<i32>, right: Vec<i32>) -> Vec<i32> {
     let mut result = Vec::new();
 
     let mut left_index = 0;

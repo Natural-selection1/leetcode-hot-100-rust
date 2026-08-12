@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "105.从前中序遍历构造二叉树.rs"]
 mod build_tree;

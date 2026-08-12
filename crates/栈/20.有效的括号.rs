@@ -9,7 +9,7 @@ use std::collections::HashMap;
 
 impl crate::Solution {
     pub fn is_valid(raw_string: String) -> bool {
-        if raw_string.len() % 2 == 0 {
+        if raw_string.len().is_multiple_of(2) {
             return false;
         }
 

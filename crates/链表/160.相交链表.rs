@@ -31,7 +31,7 @@ pub fn unsafe_get_intersection_node(
 pub fn safe_get_intersection_node<'a>(
     head1: &'a Option<Box<ListNode>>,
     head2: &'a Option<Box<ListNode>>,
-) -> Option<&'a Box<ListNode>> {
+) -> Option<&'a ListNode> {
     let head1 = head1.as_ref()?;
     let head2 = head2.as_ref()?;
     let mut ptr1 = head1;

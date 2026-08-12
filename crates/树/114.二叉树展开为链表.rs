@@ -30,9 +30,9 @@ fn dfs_1(root: &mut Option<Rc<RefCell<TreeNode>>>) {
     dfs_1(&mut right);
 
     match (left, right) {
-        (None, None) => return,
-        (branch @ Some(_), None) | (None, branch @ Some(_)) => return root.right = branch,
-        (left @ Some(_),  right @ Some(_)) => {
+        (None, None) => (),
+        (branch @ Some(_), None) | (None, branch @ Some(_)) => root.right = branch,
+        (left @ Some(_), right @ Some(_)) => {
             // 先把左子树插上去, 再把右子树刚刚插上去的左子树的尾部
             root.right = left;
 

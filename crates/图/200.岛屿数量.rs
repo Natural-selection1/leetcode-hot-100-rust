@@ -28,11 +28,11 @@ fn visit_island(islands_map: &mut Vec<Vec<char>>, row: usize, col: usize) {
     }
 
     islands_map[row][col] = '*'; // 标记已访问
-    // 1 0 1 1 1
-    // 1 0 1 0 1
-    // 1 0 0 0 1
-    // 1 1 1 1 1
-    // 不能只向右和下走, 是为了防止出现上面这种情况
+                                 // 1 0 1 1 1
+                                 // 1 0 1 0 1
+                                 // 1 0 0 0 1
+                                 // 1 1 1 1 1
+                                 // 不能只向右和下走, 是为了防止出现上面这种情况
     visit_island(islands_map, row, col - 1);
     visit_island(islands_map, row, col + 1);
     visit_island(islands_map, row - 1, col);

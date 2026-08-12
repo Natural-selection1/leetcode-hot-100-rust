@@ -1,8 +1,10 @@
+#![allow(unused)]
+
 //! ACM 模式的链表题入口。
 //!
 //! 后续在 `main` 中依次补充：读取标准输入、构建链表、调用题解、输出结果。
 
-use std::{io::prelude::BufRead, println, todo, vec};
+use std::{io::prelude::BufRead, vec};
 
 fn main() {
     let input = std::io::stdin().lock().lines();
@@ -12,7 +14,7 @@ fn main() {
         let vec = line.split_whitespace();
 
         let vec: Vec<i32> = vec.into_iter().map(|char| char.parse().unwrap()).collect();
-        let list = ListNode::from_vec_recursive(values);
+        let list = ListNode::from_vec_recursive(&vec);
         lists.push(list);
     }
 }
@@ -26,7 +28,7 @@ impl ListNode {
     pub fn new_from_vec(values: Vec<i32>) -> Option<Box<ListNode>> {
         let mut head = None;
 
-        for &val in values.into_iter().rev() {
+        for val in values.into_iter().rev() {
             head = Some(Box::new(ListNode { val, next: head }));
         }
 

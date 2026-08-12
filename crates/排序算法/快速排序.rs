@@ -1,5 +1,3 @@
-use std::todo;
-
 use crate::Solution;
 
 impl Solution {
@@ -8,7 +6,7 @@ impl Solution {
             return;
         }
 
-        let mid = sort_last_num_then_get_index(&mut nums);
+        let mid = sort_last_num_then_get_index(nums);
 
         let (left, right) = nums.split_at_mut(mid);
         Self::quick_sort(left);

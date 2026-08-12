@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    fn selection_sort(nums: &mut Vec<i32>) {
+    fn selection_sort(nums: &mut [i32]) {
         for i in 0..nums.len() {
             let mut index_of_min_num = i;
 

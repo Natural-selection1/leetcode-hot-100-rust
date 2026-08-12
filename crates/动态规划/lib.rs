@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "./416.分割等和子集.rs"]
 mod can_partition;

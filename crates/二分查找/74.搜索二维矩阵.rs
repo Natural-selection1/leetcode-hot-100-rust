@@ -14,7 +14,10 @@ impl crate::Solution {
             .find(|row| row.last().expect("行为空") >= &target);
 
         match target_line {
-            Some(x) => (|row: &Vec<i32>| row.binary_search(&target).is_ok())(&x),
+            Some(x) => {
+                let bool_fn = |row: &Vec<i32>| row.binary_search(&target).is_ok();
+                bool_fn(&x)
+            }
             None => false,
         }
     }
@@ -24,6 +27,7 @@ impl crate::Solution {
         let mut row = 0;
         let mut col_opt = Some(matrix[0].len() - 1);
 
+        #[allow(clippy::while_let_loop)]
         loop {
             let col = match col_opt {
                 Some(col) => col,

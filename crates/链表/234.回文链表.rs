@@ -4,7 +4,7 @@
  * [234] 回文链表
  */
 
-use std::{i32, unreachable, vec};
+use std::{unreachable, vec};
 
 // @lc code=start
 use crate::ListNode;

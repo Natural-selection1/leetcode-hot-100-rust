@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    fn insertion_sort(nums: &mut Vec<i32>) {
+    fn insertion_sort(nums: &mut [i32]) {
         for i in 1..nums.len() {
             let current = nums[i];
             let mut j = i;

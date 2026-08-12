@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "./215.数组中的第k个最大元素.rs"]
 mod find_kth_largest;

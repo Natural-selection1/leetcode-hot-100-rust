@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    fn bubble_sort(nums: &mut Vec<i32>) {
+    fn bubble_sort(nums: &mut [i32]) {
         for i in 0..nums.len() {
             let mut has_swaped = false;
             for j in 0..(nums.len() - i - 1) {

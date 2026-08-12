@@ -81,7 +81,7 @@ impl Trie {
         let mut node = &mut self.trie_node;
 
         for char in word {
-            node = node.trie_node.entry(char).or_insert_with(TrieNode::default)
+            node = node.trie_node.entry(char).or_default()
         }
         node.is_word = true;
     }

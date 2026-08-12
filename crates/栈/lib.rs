@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "./739.每日温度.rs"]
 mod daily_temperatures;

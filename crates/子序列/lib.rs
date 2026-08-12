@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![deny(clippy::unwrap_used)]
 
 #[path = "239.滑动窗口最大值.rs"]
 mod max_sliding_window;

@@ -38,7 +38,7 @@ impl MedianFinder {
             }
         }
     }
-    
+
     fn find_median(&self) -> f64 {
         match self.left.len() > self.right.len() {
             true => *self.left.peek().unwrap() as f64,
