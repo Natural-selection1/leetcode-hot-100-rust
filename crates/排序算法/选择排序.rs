@@ -2,16 +2,44 @@ use crate::Solution;
 
 impl Solution {
     fn selection_sort(nums: &mut [i32]) {
-        for i in 0..nums.len() {
-            let mut index_of_min_num = i;
-
-            for j in (i + 1)..nums.len() {
-                if nums[j] < nums[index_of_min_num] {
-                    index_of_min_num = j;
-                }
-            }
-
-            nums.swap(i, index_of_min_num);
-        }
+        todo!()
     }
 }
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+fn selection_sort(nums: &mut [i32]) {
+    for i in 0..nums.len() {
+        let mut index_of_min_num = i;
+
+        for j in (i + 1)..nums.len() {
+            if nums[j] < nums[index_of_min_num] {
+                index_of_min_num = j;
+            }
+        }
+
+        nums.swap(i, index_of_min_num);
+    }
+}
+
+*/
