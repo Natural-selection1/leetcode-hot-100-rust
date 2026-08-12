@@ -5,34 +5,61 @@
  */
 
 // @lc code=start
-use std::collections::VecDeque;
 
 impl crate::Solution {
     pub fn max_sliding_window(num_list: Vec<i32>, window_size: i32) -> Vec<i32> {
-        let window_size = window_size as usize;
-        let mut result = Vec::with_capacity(num_list.len() - window_size + 1);
-        // 存放的是元素的下标
-        let mut decreasing_deque = VecDeque::with_capacity(window_size + 1);
-
-        for (index, &num) in num_list.iter().enumerate() {
-            // * 维持单调递减
-            while matches!(decreasing_deque.back(), Some(&last_index) if num_list[last_index] <= num)
-            {
-                decreasing_deque.pop_back();
-            }
-
-            decreasing_deque.push_back(index);
-            // * 移除离开窗口的元素
-            if index == decreasing_deque.front().unwrap() + window_size {
-                decreasing_deque.pop_front();
-            }
-            // * 只要开始拖动窗口, 就开始记录答案
-            if index + 1 >= window_size {
-                result.push(num_list[*decreasing_deque.front().unwrap()]);
-            }
-        }
-
-        result
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn max_sliding_window(num_list: Vec<i32>, window_size: i32) -> Vec<i32> {
+    let window_size = window_size as usize;
+    let mut result = Vec::with_capacity(num_list.len() - window_size + 1);
+    // 存放的是元素的下标
+    let mut decreasing_deque = VecDeque::with_capacity(window_size + 1);
+
+    for (index, &num) in num_list.iter().enumerate() {
+        // * 维持单调递减
+        while matches!(decreasing_deque.back(), Some(&last_index) if num_list[last_index] <= num)
+        {
+            decreasing_deque.pop_back();
+        }
+
+        decreasing_deque.push_back(index);
+        // * 移除离开窗口的元素
+        if index == decreasing_deque.front().unwrap() + window_size {
+            decreasing_deque.pop_front();
+        }
+        // * 只要开始拖动窗口, 就开始记录答案
+        if index + 1 >= window_size {
+            result.push(num_list[*decreasing_deque.front().unwrap()]);
+        }
+    }
+
+    result
+}
+
+*/

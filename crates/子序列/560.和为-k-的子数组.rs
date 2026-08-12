@@ -5,9 +5,36 @@
  */
 
 // @lc code=start
-use std::collections::HashMap;
 
 impl crate::Solution {
+    pub fn subarray_sum(nums: Vec<i32>, target_sum: i32) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
     pub fn subarray_sum(nums: Vec<i32>, target_sum: i32) -> i32 {
         let mut result = 0;
         let mut prefix_sum = 0;
@@ -27,5 +54,5 @@ impl crate::Solution {
 
         result
     }
-}
-// @lc code=end
+
+*/
