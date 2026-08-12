@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn longest_valid_parentheses(raw_string: String) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn longest_valid_parentheses(raw_string: String) -> i32 {
         let raw_string: Vec<char> = raw_string.chars().collect();
         let mut longest_len_when_arrive = vec![0; raw_string.len()];
 
@@ -35,4 +63,4 @@ impl crate::Solution {
         longest_len_when_arrive.into_iter().max().unwrap_or(0) as _
     }
 }
-// @lc code=end
+*/

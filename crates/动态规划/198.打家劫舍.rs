@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn rob(values: Vec<i32>) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn rob(values: Vec<i32>) -> i32 {
         values
             .iter()
             .skip(1)
@@ -22,4 +50,4 @@ impl crate::Solution {
             .1
     }
 }
-// @lc code=end
+*/

@@ -5,10 +5,37 @@
  */
 
 // @lc code=start
-use std::collections::HashSet;
 
 impl crate::Solution {
     pub fn word_break(raw_string: String, word_dict: Vec<String>) -> bool {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn word_break(raw_string: String, word_dict: Vec<String>) -> bool {
         let string_len = raw_string.len();
         let mut words: HashSet<String> = HashSet::new();
         for string in word_dict {
@@ -30,4 +57,4 @@ impl crate::Solution {
         dp[string_len]
     }
 }
-// @lc code=end
+*/

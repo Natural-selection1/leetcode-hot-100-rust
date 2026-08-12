@@ -7,6 +7,35 @@
 // @lc code=start
 impl crate::Solution {
     pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
+        todo!()
+    }
+}
+
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
         let num_rows = num_rows as usize;
         let mut answer = vec![vec![]; num_rows];
 
@@ -21,5 +50,4 @@ impl crate::Solution {
         answer
     }
 }
-
-// @lc code=end
+*/

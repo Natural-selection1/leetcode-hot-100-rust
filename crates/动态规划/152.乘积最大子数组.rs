@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn max_product(nums: Vec<i32>) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn max_product(nums: Vec<i32>) -> i32 {
         let mut max_product = i32::MIN;
         // 由于负负得正, 所以需要记录最小值
         let mut recent_max_product = 1;
@@ -26,4 +54,4 @@ impl crate::Solution {
         max_product
     }
 }
-// @lc code=end
+*/

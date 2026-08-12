@@ -8,6 +8,40 @@
 impl crate::Solution {
     // 动态规划
     pub fn length_of_lis_(nums: Vec<i32>) -> i32 {
+        todo!()
+    }
+
+    // 贪心
+    pub fn length_of_lis(nums: Vec<i32>) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+// 动态规划
+pub fn length_of_lis_(nums: Vec<i32>) -> i32 {
         let mut length_of_lis = 1;
         let mut len_when_arrive = vec![1; nums.len()];
 
@@ -24,8 +58,8 @@ impl crate::Solution {
         length_of_lis
     }
 
-    // 贪心
-    pub fn length_of_lis(nums: Vec<i32>) -> i32 {
+// 贪心
+pub fn length_of_lis(nums: Vec<i32>) -> i32 {
         let mut min_tail_num_of_len = vec![i32::MIN, nums[0]];
 
         for num in nums.into_iter().skip(1) {
@@ -41,4 +75,4 @@ impl crate::Solution {
         min_tail_num_of_len.len() as i32 - 1
     }
 }
-// @lc code=end
+*/

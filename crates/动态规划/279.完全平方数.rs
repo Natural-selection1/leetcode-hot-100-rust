@@ -8,6 +8,40 @@
 impl crate::Solution {
     // 二维dp
     pub fn num_squares(target_num: i32) -> i32 {
+        todo!()
+    }
+
+    // 一维dp
+    pub fn num_squares_(target_num: i32) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+// 二维dp
+pub fn num_squares(target_num: i32) -> i32 {
         let target_num = target_num as usize;
         let mut dp = vec![vec![i32::MAX; target_num + 1]; 101];
 
@@ -26,8 +60,8 @@ impl crate::Solution {
         dp[(target_num as f64).sqrt() as usize][target_num]
     }
 
-    // 一维dp
-    pub fn num_squares_(target_num: i32) -> i32 {
+// 一维dp
+pub fn num_squares_(target_num: i32) -> i32 {
         let target_num = target_num as usize;
         let mut min_squares_sum: Vec<i32> = (0..=target_num).map(|i| i as i32).collect();
         // 以 12 举例
@@ -47,4 +81,4 @@ impl crate::Solution {
         min_squares_sum[target_num]
     }
 }
-// @lc code=end
+*/

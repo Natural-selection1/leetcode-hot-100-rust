@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn climb_stairs(times: i32) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn climb_stairs(times: i32) -> i32 {
         (1..=times)
             .fold(
                 (0, 1),
@@ -20,4 +48,4 @@ impl crate::Solution {
             .1
     }
 }
-// @lc code=end
+*/

@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn can_partition(nums: Vec<i32>) -> bool {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn can_partition(nums: Vec<i32>) -> bool {
         let nums: Vec<usize> = nums.into_iter().map(|num| num as usize).collect();
         let nums_sum: usize = nums.iter().sum();
         let target_sum = nums_sum / 2;
@@ -35,4 +63,4 @@ impl crate::Solution {
         can_build_sum[target_sum]
     }
 }
-// @lc code=end
+*/

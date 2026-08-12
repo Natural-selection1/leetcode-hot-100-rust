@@ -7,6 +7,34 @@
 // @lc code=start
 impl crate::Solution {
     pub fn coin_change(coins: Vec<i32>, target_amount: i32) -> i32 {
+        todo!()
+    }
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn coin_change(coins: Vec<i32>, target_amount: i32) -> i32 {
         let coins: Vec<usize> = coins.into_iter().map(|x| x as usize).collect();
         let target_amount = target_amount as usize;
 
@@ -31,4 +59,4 @@ impl crate::Solution {
         }
     }
 }
-// @lc code=end
+*/
