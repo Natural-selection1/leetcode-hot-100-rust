@@ -7,14 +7,42 @@
 // @lc code=start
 impl crate::Solution {
     pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        // 两次二分
-        let start = nums.partition_point(|&x| x < target) as i32;
-        let end = nums.partition_point(|&x| x <= target) as i32;
-
-        match start == end {
-            true => vec![-1, -1],
-            false => vec![start, end - 1],
-        }
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
+    // 两次二分
+    let start = nums.partition_point(|&x| x < target) as i32;
+    let end = nums.partition_point(|&x| x <= target) as i32;
+
+    match start == end {
+        true => vec![-1, -1],
+        false => vec![start, end - 1],
+    }
+}
+
+*/

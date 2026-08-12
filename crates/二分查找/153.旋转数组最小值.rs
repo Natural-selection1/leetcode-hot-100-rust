@@ -9,22 +9,56 @@ use std::ops::{Add, Div};
 
 impl crate::Solution {
     pub fn find_min(nums: Vec<i32>) -> i32 {
-        let last = *nums.last().expect("nums is empty");
-        // 左闭右开区间 [0, n-1)
-        let mut left = 0;
-        let mut right = nums.len() - 1;
-
-        while left < right {
-            let mid = midpoint(left, right);
-
-            match nums[mid] < last {
-                true => right = mid,
-                false => left = mid + 1,
-            }
-        }
-
-        nums[left]
+        todo!()
     }
+}
+
+fn midpoint<T: Add>(left: T, right: T) -> T
+where
+    <T as Add>::Output: Div<usize, Output = T>,
+{
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn find_min(nums: Vec<i32>) -> i32 {
+    let last = *nums.last().expect("nums is empty");
+    // 左闭右开区间 [0, n-1)
+    let mut left = 0;
+    let mut right = nums.len() - 1;
+
+    while left < right {
+        let mid = midpoint(left, right);
+
+        match nums[mid] < last {
+            true => right = mid,
+            false => left = mid + 1,
+        }
+    }
+
+    nums[left]
 }
 
 fn midpoint<T: Add>(left: T, right: T) -> T
@@ -33,4 +67,5 @@ where
 {
     (left + right) / 2
 }
-// @lc code=end
+
+*/

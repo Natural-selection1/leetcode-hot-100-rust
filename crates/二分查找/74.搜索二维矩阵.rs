@@ -9,44 +9,76 @@
 impl crate::Solution {
     // 暴力二分
     pub fn search_matrix_(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-        let target_line = matrix
-            .into_iter()
-            .find(|row| row.last().expect("行为空") >= &target);
-
-        match target_line {
-            Some(x) => {
-                let bool_fn = |row: &Vec<i32>| row.binary_search(&target).is_ok();
-                bool_fn(&x)
-            }
-            None => false,
-        }
+        todo!()
     }
 
     // 利用单调性
     pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-        let mut row = 0;
-        let mut col_opt = Some(matrix[0].len() - 1);
-
-        #[allow(clippy::while_let_loop)]
-        loop {
-            let col = match col_opt {
-                Some(col) => col,
-                None => break,
-            };
-            let val = match matrix.get(row).and_then(|r| r.get(col)) {
-                Some(val) => val,
-                None => break,
-            };
-
-            match val.cmp(&target) {
-                std::cmp::Ordering::Greater => col_opt = col.checked_sub(1),
-                std::cmp::Ordering::Less => row += 1,
-                std::cmp::Ordering::Equal => return true,
-            }
-        }
-
-        false
+        todo!()
     }
 }
 
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn search_matrix_(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+    let target_line = matrix
+        .into_iter()
+        .find(|row| row.last().expect("行为空") >= &target);
+
+    match target_line {
+        Some(x) => {
+            let bool_fn = |row: &Vec<i32>| row.binary_search(&target).is_ok();
+            bool_fn(&x)
+        }
+        None => false,
+    }
+}
+
+pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+    let mut row = 0;
+    let mut col_opt = Some(matrix[0].len() - 1);
+
+    #[allow(clippy::while_let_loop)]
+    loop {
+        let col = match col_opt {
+            Some(col) => col,
+            None => break,
+        };
+        let val = match matrix.get(row).and_then(|r| r.get(col)) {
+            Some(val) => val,
+            None => break,
+        };
+
+        match val.cmp(&target) {
+            std::cmp::Ordering::Greater => col_opt = col.checked_sub(1),
+            std::cmp::Ordering::Less => row += 1,
+            std::cmp::Ordering::Equal => return true,
+        }
+    }
+
+    false
+}
+
+*/
