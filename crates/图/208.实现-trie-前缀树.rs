@@ -20,34 +20,78 @@ struct Table {
 
 impl Trie {
     pub fn new() -> Self {
-        Self::default()
+        todo!()
     }
 
     pub fn insert(&mut self, target_word: String) {
-        let final_table = target_word
-            .chars()
-            .fold(&mut self.root_table, |node, char| {
-                node.children_table
-                    .entry(char)
-                    .or_insert(Box::new(Table::default()))
-            });
-        final_table.is_word = true;
+        todo!()
     }
 
     pub fn search(&self, target_word: String) -> bool {
-        matches!(self.get_node(&target_word), Some(node) if node.is_word)
+        todo!()
     }
 
     pub fn starts_with(&self, prefix: String) -> bool {
-        self.get_node(&prefix).is_some()
+        todo!()
     }
 
     fn get_node(&self, target_word: &str) -> Option<&Table> {
-        target_word
-            .chars()
-            .try_fold(&self.root_table, |node, char| {
-                Some(node.children_table.get(&char)?.as_ref())
-            })
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn new() -> Self {
+    Self::default()
+}
+
+pub fn insert(&mut self, target_word: String) {
+    let final_table = target_word
+        .chars()
+        .fold(&mut self.root_table, |node, char| {
+            node.children_table
+                .entry(char)
+                .or_insert(Box::new(Table::default()))
+        });
+    final_table.is_word = true;
+}
+
+pub fn search(&self, target_word: String) -> bool {
+    matches!(self.get_node(&target_word), Some(node) if node.is_word)
+}
+
+pub fn starts_with(&self, prefix: String) -> bool {
+    self.get_node(&prefix).is_some()
+}
+
+fn get_node(&self, target_word: &str) -> Option<&Table> {
+    target_word
+        .chars()
+        .try_fold(&self.root_table, |node, char| {
+            Some(node.children_table.get(&char)?.as_ref())
+        })
+}
+
+*/

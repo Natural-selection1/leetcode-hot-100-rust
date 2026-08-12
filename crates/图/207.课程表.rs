@@ -16,30 +16,65 @@ enum VisitState {
 
 impl crate::Solution {
     pub fn can_finish(courses_count: i32, prerequisites: Vec<Vec<i32>>) -> bool {
-        let courses_count = courses_count as usize;
-
-        let successor_table: HashMap<usize, Vec<usize>> =
-            prerequisites
-                .into_iter()
-                .fold(HashMap::new(), |mut table, relationship| {
-                    let successor = relationship[0] as usize;
-                    let prerequisite = relationship[1] as usize;
-                    table.entry(prerequisite).or_default().push(successor);
-                    table
-                });
-
-        // 深度优先判断是否有环
-        let mut visit_states = vec![VisitState::NotVisited; courses_count];
-        for course in 0..courses_count {
-            if visit_states[course] == VisitState::NotVisited
-                && has_cycle(course, &successor_table, &mut visit_states)
-            {
-                return false;
-            }
-        }
-
-        true
+        todo!()
     }
+}
+
+fn has_cycle(
+    course: usize,
+    successor_graph: &HashMap<usize, Vec<usize>>,
+    visit_states: &mut [VisitState],
+) -> bool {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn can_finish(courses_count: i32, prerequisites: Vec<Vec<i32>>) -> bool {
+    let courses_count = courses_count as usize;
+
+    let successor_table: HashMap<usize, Vec<usize>> =
+        prerequisites
+            .into_iter()
+            .fold(HashMap::new(), |mut table, relationship| {
+                let successor = relationship[0] as usize;
+                let prerequisite = relationship[1] as usize;
+                table.entry(prerequisite).or_default().push(successor);
+                table
+            });
+
+    // 深度优先判断是否有环
+    let mut visit_states = vec![VisitState::NotVisited; courses_count];
+    for course in 0..courses_count {
+        if visit_states[course] == VisitState::NotVisited
+            && has_cycle(course, &successor_table, &mut visit_states)
+        {
+            return false;
+        }
+    }
+
+    true
 }
 
 fn has_cycle(
@@ -66,4 +101,5 @@ fn has_cycle(
     visit_states[course] = VisitState::Visited;
     false
 }
-// @lc code=end
+
+*/

@@ -7,19 +7,50 @@
 // @lc code=start
 impl crate::Solution {
     pub fn num_islands(mut islands_map: Vec<Vec<char>>) -> i32 {
-        let mut islands_count = 0;
+        todo!()
+    }
+}
 
-        for i in 0..islands_map.len() {
-            for j in 0..islands_map[i].len() {
-                if islands_map[i][j] == '1' {
-                    visit_island(&mut islands_map, i, j);
-                    islands_count += 1;
-                }
+fn visit_island(islands_map: &mut Vec<Vec<char>>, row: usize, col: usize) {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn num_islands(mut islands_map: Vec<Vec<char>>) -> i32 {
+    let mut islands_count = 0;
+
+    for i in 0..islands_map.len() {
+        for j in 0..islands_map[i].len() {
+            if islands_map[i][j] == '1' {
+                visit_island(&mut islands_map, i, j);
+                islands_count += 1;
             }
         }
-
-        islands_count
     }
+
+    islands_count
 }
 
 fn visit_island(islands_map: &mut Vec<Vec<char>>, row: usize, col: usize) {
@@ -38,4 +69,5 @@ fn visit_island(islands_map: &mut Vec<Vec<char>>, row: usize, col: usize) {
     visit_island(islands_map, row - 1, col);
     visit_island(islands_map, row + 1, col);
 }
-// @lc code=end
+
+*/
