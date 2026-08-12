@@ -10,46 +10,78 @@
 impl crate::Solution {
     // 倒序遍历
     pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
-        let data_len = temperatures.len();
-        let mut answer = vec![0; data_len];
-        let mut decreasing_stack = vec![];
-
-        for (index, &temperature) in temperatures.iter().enumerate().rev() {
-            while matches!(decreasing_stack.last(), Some(&last_index) if temperature >= temperatures[last_index])
-            {
-                decreasing_stack.pop();
-            }
-
-            decreasing_stack
-                .last()
-                .map(|&exist_index| answer[index] = (exist_index - index) as i32);
-            decreasing_stack.push(index);
-        }
-
-        answer
+        todo!()
     }
 
     // 正序遍历
     pub fn daily_temperatures_(temperatures: Vec<i32>) -> Vec<i32> {
-        let data_len = temperatures.len();
-        let mut answer = vec![0; data_len];
-        let mut decreasing_stack = vec![];
-
-        for (index, &temperature) in temperatures.iter().enumerate() {
-            while let Some(&top_index) = decreasing_stack.last() {
-                match temperature > temperatures[top_index] {
-                    true => {
-                        answer[top_index] = (index - top_index) as i32;
-                        decreasing_stack.pop();
-                    }
-                    false => break,
-                }
-            }
-
-            decreasing_stack.push(index);
-        }
-
-        answer
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
+    let data_len = temperatures.len();
+    let mut answer = vec![0; data_len];
+    let mut decreasing_stack = vec![];
+
+    for (index, &temperature) in temperatures.iter().enumerate().rev() {
+        while matches!(decreasing_stack.last(), Some(&last_index) if temperature >= temperatures[last_index])
+        {
+            decreasing_stack.pop();
+        }
+
+        decreasing_stack
+            .last()
+            .map(|&exist_index| answer[index] = (exist_index - index) as i32);
+        decreasing_stack.push(index);
+    }
+
+    answer
+}
+
+pub fn daily_temperatures_(temperatures: Vec<i32>) -> Vec<i32> {
+    let data_len = temperatures.len();
+    let mut answer = vec![0; data_len];
+    let mut decreasing_stack = vec![];
+
+    for (index, &temperature) in temperatures.iter().enumerate() {
+        while let Some(&top_index) = decreasing_stack.last() {
+            match temperature > temperatures[top_index] {
+                true => {
+                    answer[top_index] = (index - top_index) as i32;
+                    decreasing_stack.pop();
+                }
+                false => break,
+            }
+        }
+
+        decreasing_stack.push(index);
+    }
+
+    answer
+}
+
+*/

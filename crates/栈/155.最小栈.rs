@@ -16,31 +16,29 @@ struct Element {
 
 impl Element {
     fn new(val: i32, prefix_min: i32) -> Self {
-        Self { val, prefix_min }
+        todo!()
     }
 }
 
 impl MinStack {
     fn new() -> Self {
-        Self {
-            vec: vec![Element::new(0, i32::MAX)],
-        }
+        todo!()
     }
 
     fn push(&mut self, val: i32) {
-        self.vec.push(Element::new(val, self.get_min().min(val)));
+        todo!()
     }
 
     fn pop(&mut self) {
-        self.vec.pop();
+        todo!()
     }
 
     fn top(&self) -> i32 {
-        self.vec.last().unwrap().val
+        todo!()
     }
 
     fn get_min(&self) -> i32 {
-        self.vec.last().unwrap().prefix_min
+        todo!()
     }
 }
 
@@ -53,3 +51,53 @@ impl MinStack {
  * let ret_4: i32 = obj.get_min();
  */
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+fn new(val: i32, prefix_min: i32) -> Self {
+    Self { val, prefix_min }
+}
+
+fn new() -> Self {
+    Self {
+        vec: vec![Element::new(0, i32::MAX)],
+    }
+}
+
+fn push(&mut self, val: i32) {
+    self.vec.push(Element::new(val, self.get_min().min(val)));
+}
+
+fn pop(&mut self) {
+    self.vec.pop();
+}
+
+fn top(&self) -> i32 {
+    self.vec.last().unwrap().val
+}
+
+fn get_min(&self) -> i32 {
+    self.vec.last().unwrap().prefix_min
+}
+
+*/
