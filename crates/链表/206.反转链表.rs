@@ -10,25 +10,64 @@ use crate::ListNode;
 impl crate::Solution {
     // 指针迭代
     pub fn reverse_list_1(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut previous_node = None;
-        let mut option_current_node = head;
-
-        // 头插法
-        while let Some(mut current_node) = option_current_node {
-            let next_node = current_node.next.take();
-            current_node.next = previous_node;
-
-            previous_node = Some(current_node);
-            option_current_node = next_node;
-        }
-
-        previous_node
+        todo!()
     }
 
     // 递归写法
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        reverse(None, head)
+        todo!()
     }
+}
+
+fn reverse(
+    previous_node: Option<Box<ListNode>>,
+    current_node: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>> {
+    todo!()
+}
+
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn reverse_list_1(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut previous_node = None;
+    let mut option_current_node = head;
+
+    // 头插法
+    while let Some(mut current_node) = option_current_node {
+        let next_node = current_node.next.take();
+        current_node.next = previous_node;
+
+        previous_node = Some(current_node);
+        option_current_node = next_node;
+    }
+
+    previous_node
+}
+
+pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    reverse(None, head)
 }
 
 fn reverse(
@@ -46,4 +85,4 @@ fn reverse(
     }
 }
 
-// @lc code=end
+*/

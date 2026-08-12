@@ -10,24 +10,60 @@ type Node = Box<ListNode>;
 
 impl crate::Solution {
     pub fn sort_list(head: Option<Node>) -> Option<Node> {
-        match head.as_ref() {
-            None => return head,
-            Some(node) if node.next.is_none() => return head,
-            // 至少有两个节点
-            Some(_) => {}
-        }
-
-        // 模拟归并排序
-        let latter_half_head = middle_node(&head);
-
-        let former_half_head = Self::sort_list(head);
-        let latter_half_head = Self::sort_list(latter_half_head);
-
-        merge_two_lists(former_half_head, latter_half_head)
+        todo!()
     }
 }
 
 // 876. 链表的中间结点（快慢指针）
+fn middle_node(head: &Option<Node>) -> Option<Node> {
+    todo!()
+}
+
+// 21. 合并两个有序链表（双指针）
+fn merge_two_lists(mut list1: Option<Node>, mut list2: Option<Node>) -> Option<Node> {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn sort_list(head: Option<Node>) -> Option<Node> {
+    match head.as_ref() {
+        None => return head,
+        Some(node) if node.next.is_none() => return head,
+        // 至少有两个节点
+        Some(_) => {}
+    }
+
+    // 模拟归并排序
+    let latter_half_head = middle_node(&head);
+
+    let former_half_head = Self::sort_list(head);
+    let latter_half_head = Self::sort_list(latter_half_head);
+
+    merge_two_lists(former_half_head, latter_half_head)
+}
+
 fn middle_node(head: &Option<Node>) -> Option<Node> {
     let mut fast = head;
     let mut slow = head;
@@ -41,7 +77,6 @@ fn middle_node(head: &Option<Node>) -> Option<Node> {
     slow.take()
 }
 
-// 21. 合并两个有序链表（双指针）
 fn merge_two_lists(mut list1: Option<Node>, mut list2: Option<Node>) -> Option<Node> {
     let mut dummy = ListNode::new(i32::MIN);
     let mut cur = &mut dummy;
@@ -62,4 +97,5 @@ fn merge_two_lists(mut list1: Option<Node>, mut list2: Option<Node>) -> Option<N
     cur.next = list1.or(list2);
     dummy.next
 }
-// @lc code=end
+
+*/

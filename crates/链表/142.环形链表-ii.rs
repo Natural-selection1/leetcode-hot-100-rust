@@ -11,8 +11,48 @@ pub struct ListNode {
 
 impl ListNode {
     pub fn new(val: i32) -> Self {
-        ListNode { val, next: None }
+        todo!()
     }
+}
+
+pub fn detect_cycle_position(head: Option<NonNull<ListNode>>) -> i32 {
+    todo!()
+}
+
+// 辅助函数：找到快慢指针的相遇点
+fn find_meeting_point(head: NonNull<ListNode>) -> Option<NonNull<ListNode>> {
+    todo!()
+}
+
+#[test]
+fn test_detect_cycle() {
+    todo!()
+}
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn new(val: i32) -> Self {
+    ListNode { val, next: None }
 }
 
 pub fn detect_cycle_position(head: Option<NonNull<ListNode>>) -> i32 {
@@ -39,7 +79,6 @@ pub fn detect_cycle_position(head: Option<NonNull<ListNode>>) -> i32 {
     count
 }
 
-// 辅助函数：找到快慢指针的相遇点
 fn find_meeting_point(head: NonNull<ListNode>) -> Option<NonNull<ListNode>> {
     let mut slow = head;
     let mut fast = head;
@@ -54,7 +93,6 @@ fn find_meeting_point(head: NonNull<ListNode>) -> Option<NonNull<ListNode>> {
     }
 }
 
-#[test]
 fn test_detect_cycle() {
     // 测试用例1: [3,2,0,-4], pos=1
     let node3 = Box::new(ListNode::new(3));
@@ -107,3 +145,5 @@ fn test_detect_cycle() {
     assert_eq!(cycle_start, -1);
     println!("测试用例4通过: 空链表无环");
 }
+
+*/

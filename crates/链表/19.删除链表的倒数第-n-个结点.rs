@@ -9,27 +9,55 @@ use crate::ListNode;
 
 impl crate::Solution {
     pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
-        let dummy = ListNode {
-            val: i32::MIN,
-            next: head,
-        };
-        let mut left = &dummy;
-        let mut right = &dummy;
-
-        for _ in 0..n {
-            right = right.next.as_ref()?;
-        }
-
-        while let Some(node) = &right.next {
-            left = left.next.as_ref()?;
-            right = node;
-        }
-
-        #[allow(mutable_transmutes)]
-        let left: &mut ListNode = unsafe { std::mem::transmute(left) };
-        left.next = left.next.take()?.next.take();
-
-        dummy.next
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+    let dummy = ListNode {
+        val: i32::MIN,
+        next: head,
+    };
+    let mut left = &dummy;
+    let mut right = &dummy;
+
+    for _ in 0..n {
+        right = right.next.as_ref()?;
+    }
+
+    while let Some(node) = &right.next {
+        left = left.next.as_ref()?;
+        right = node;
+    }
+
+    #[allow(mutable_transmutes)]
+    let left: &mut ListNode = unsafe { std::mem::transmute(left) };
+    left.next = left.next.take()?.next.take();
+
+    dummy.next
+}
+
+*/

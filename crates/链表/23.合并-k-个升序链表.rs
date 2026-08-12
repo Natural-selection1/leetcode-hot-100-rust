@@ -7,44 +7,77 @@
 // @lc code=start
 #![allow(clippy::option_map_unit_fn)]
 use crate::ListNode;
-use std::{
-    cmp::{Ord, PartialOrd, Reverse},
-    collections::BinaryHeap,
-};
+use std::cmp::{Ord, PartialOrd};
 
 impl Ord for ListNode {
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        self.val.cmp(&other.val)
+        todo!()
     }
 }
 
 impl PartialOrd for ListNode {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        Some(self.cmp(other))
+        todo!()
     }
 }
 
 impl crate::Solution {
     pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
-        let mut dummy = ListNode::new(0);
-        let mut current = &mut dummy;
-        let mut min_heap = BinaryHeap::new();
-
-        // 维护K个列表头结点的小顶堆
-        lists
-            .into_iter()
-            .flatten()
-            .for_each(|node| min_heap.push(Reverse(node)));
-
-        while let Some(Reverse(mut node)) = min_heap.pop() {
-            if let Some(next) = node.next.take() {
-                min_heap.push(Reverse(next))
-            };
-            current.next = Some(node);
-            current = current.next.as_mut()?;
-        }
-
-        dummy.next
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+    self.val.cmp(&other.val)
+}
+
+fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+    Some(self.cmp(other))
+}
+
+pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+    let mut dummy = ListNode::new(0);
+    let mut current = &mut dummy;
+    let mut min_heap = BinaryHeap::new();
+
+    // 维护K个列表头结点的小顶堆
+    lists
+        .into_iter()
+        .flatten()
+        .for_each(|node| min_heap.push(Reverse(node)));
+
+    while let Some(Reverse(mut node)) = min_heap.pop() {
+        if let Some(next) = node.next.take() {
+            min_heap.push(Reverse(next))
+        };
+        current.next = Some(node);
+        current = current.next.as_mut()?;
+    }
+
+    dummy.next
+}
+
+*/

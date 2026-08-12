@@ -13,26 +13,7 @@ impl crate::Solution {
         mut l1: Option<Box<ListNode>>,
         mut l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let mut dummy = ListNode::new(i32::MIN);
-        let mut current = &mut dummy;
-        let mut carry = 0;
-
-        while l1.is_some() || l2.is_some() || carry != 0 {
-            if let Some(node) = l1 {
-                carry += node.val;
-                l1 = node.next;
-            }
-            if let Some(node) = l2 {
-                carry += node.val;
-                l2 = node.next;
-            }
-
-            current.next = Some(Box::new(ListNode::new(carry % 10))); // 每个节点保存一个数位
-            carry /= 10; // 新的进位
-            current = current.next.as_mut()?;
-        }
-
-        dummy.next
+        todo!()
     }
 
     // 递归写法
@@ -40,8 +21,72 @@ impl crate::Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        compute(l1, l2, 0)
+        todo!()
     }
+}
+
+fn compute(
+    l1: Option<Box<ListNode>>,
+    l2: Option<Box<ListNode>>,
+    mut carry: i32,
+) -> Option<Box<ListNode>> {
+    todo!()
+}
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn add_two_numbers_(
+    mut l1: Option<Box<ListNode>>,
+    mut l2: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>> {
+    let mut dummy = ListNode::new(i32::MIN);
+    let mut current = &mut dummy;
+    let mut carry = 0;
+
+    while l1.is_some() || l2.is_some() || carry != 0 {
+        if let Some(node) = l1 {
+            carry += node.val;
+            l1 = node.next;
+        }
+        if let Some(node) = l2 {
+            carry += node.val;
+            l2 = node.next;
+        }
+
+        current.next = Some(Box::new(ListNode::new(carry % 10))); // 每个节点保存一个数位
+        carry /= 10; // 新的进位
+        current = current.next.as_mut()?;
+    }
+
+    dummy.next
+}
+
+pub fn add_two_numbers(
+    l1: Option<Box<ListNode>>,
+    l2: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>> {
+    compute(l1, l2, 0)
 }
 
 fn compute(
@@ -68,4 +113,5 @@ fn compute(
         None
     }
 }
-// @lc code=end
+
+*/

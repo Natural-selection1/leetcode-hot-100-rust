@@ -41,7 +41,7 @@ pub struct ListNode {
 impl ListNode {
     #[inline]
     fn new(val: i32) -> Self {
-        ListNode { next: None, val }
+        todo!()
     }
 }
 
@@ -58,6 +58,38 @@ pub struct UnsafeListNode {
 impl UnsafeListNode {
     #[inline]
     fn new(val: i32) -> Self {
-        UnsafeListNode { next: None, val }
+        todo!()
     }
 }
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+fn new(val: i32) -> Self {
+    ListNode { next: None, val }
+}
+
+fn new(val: i32) -> Self {
+    UnsafeListNode { next: None, val }
+}
+
+*/

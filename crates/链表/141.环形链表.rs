@@ -5,6 +5,37 @@ use crate::UnsafeListNode;
 use std::ptr::NonNull;
 
 pub fn has_cycle(head: Option<NonNull<UnsafeListNode>>) -> bool {
+    todo!()
+}
+
+#[test]
+fn test_has_cycle() {
+    todo!()
+}
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn has_cycle(head: Option<NonNull<UnsafeListNode>>) -> bool {
     // 如果链表为空或只有一个节点，肯定没有环
     let head = match head {
         Some(ptr) => ptr,
@@ -36,7 +67,6 @@ pub fn has_cycle(head: Option<NonNull<UnsafeListNode>>) -> bool {
     }
 }
 
-#[test]
 fn test_has_cycle() {
     // 测试用例1: 有环链表 [3,2,0,-4]，pos=1
     let node1 = Box::new(UnsafeListNode::new(3));
@@ -80,3 +110,5 @@ fn test_has_cycle() {
     // 测试用例4: 空链表
     assert!(!has_cycle(None));
 }
+
+*/

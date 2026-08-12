@@ -8,6 +8,42 @@ pub fn unsafe_get_intersection_node(
     head1: Option<NonNull<UnsafeListNode>>,
     head2: Option<NonNull<UnsafeListNode>>,
 ) -> Option<NonNull<UnsafeListNode>> {
+    todo!()
+}
+
+pub fn safe_get_intersection_node<'a>(
+    head1: &'a Option<Box<ListNode>>,
+    head2: &'a Option<Box<ListNode>>,
+) -> Option<&'a ListNode> {
+    todo!()
+}
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn unsafe_get_intersection_node(
+    head1: Option<NonNull<UnsafeListNode>>,
+    head2: Option<NonNull<UnsafeListNode>>,
+) -> Option<NonNull<UnsafeListNode>> {
     let head1 = head1?;
     let head2 = head2?;
     let mut ptr1 = head1;
@@ -50,3 +86,5 @@ pub fn safe_get_intersection_node<'a>(
 
     Some(ptr1)
 }
+
+*/

@@ -12,21 +12,59 @@ impl crate::Solution {
         mut head: Option<Box<ListNode>>,
         slice_len: i32,
     ) -> Option<Box<ListNode>> {
-        let new_head = {
-            let mut next_head = &mut head;
-            // 获取下一轮头结点
-            for _ in 0..slice_len {
-                match next_head.as_mut() {
-                    Some(node) => next_head = &mut node.next,
-                    None => return head,
-                }
-            }
-
-            Self::reverse_k_group(next_head.take(), slice_len)
-        };
-
-        reverse_list(new_head, head)
+        todo!()
     }
+}
+
+fn reverse_list(
+    reversed_list_tail: Option<Box<ListNode>>,
+    remaining_head: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>> {
+    todo!()
+}
+
+// @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn reverse_k_group(
+    mut head: Option<Box<ListNode>>,
+    slice_len: i32,
+) -> Option<Box<ListNode>> {
+    let new_head = {
+        let mut next_head = &mut head;
+        // 获取下一轮头结点
+        for _ in 0..slice_len {
+            match next_head.as_mut() {
+                Some(node) => next_head = &mut node.next,
+                None => return head,
+            }
+        }
+
+        Self::reverse_k_group(next_head.take(), slice_len)
+    };
+
+    reverse_list(new_head, head)
 }
 
 fn reverse_list(
@@ -44,4 +82,4 @@ fn reverse_list(
     }
 }
 
-// @lc code=end
+*/
