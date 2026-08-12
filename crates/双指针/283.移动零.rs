@@ -7,21 +7,51 @@
 // @lc code=start
 impl crate::Solution {
     pub fn move_zeroes(nums: &mut [i32]) {
-        let mut next_not_zero_num_index = 0;
-
-        for index in 0..nums.len() {
-            if nums[index] != 0 {
-                if index != next_not_zero_num_index {
-                    nums.swap(index, next_not_zero_num_index);
-                }
-                next_not_zero_num_index += 1;
-            }
-        }
+        todo!()
     }
 }
 // @lc code=end
 
 #[test]
+fn acm_mode_main() {
+    todo!()
+}
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn move_zeroes(nums: &mut [i32]) {
+    let mut next_not_zero_num_index = 0;
+
+    for index in 0..nums.len() {
+        if nums[index] != 0 {
+            if index != next_not_zero_num_index {
+                nums.swap(index, next_not_zero_num_index);
+            }
+            next_not_zero_num_index += 1;
+        }
+    }
+}
+
 fn acm_mode_main() {
     use std::io::BufRead;
 
@@ -37,3 +67,5 @@ fn acm_mode_main() {
     crate::Solution::move_zeroes(&mut nums);
     println!("{:?}", nums)
 }
+
+*/
