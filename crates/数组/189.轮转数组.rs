@@ -7,15 +7,47 @@
 // @lc code=start
 impl crate::Solution {
     pub fn rotate_(nums: &mut [i32], rotate_times: i32) {
-        let rotate_times = rotate_times as usize % nums.len();
-
-        nums.reverse();
-        nums[rotate_times..].reverse();
-        nums[..rotate_times].reverse();
+        todo!()
     }
 
     pub fn rotate(nums: &mut [i32], rotate_times: i32) {
-        nums.rotate_right(rotate_times as usize % nums.len());
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn rotate_(nums: &mut [i32], rotate_times: i32) {
+    let rotate_times = rotate_times as usize % nums.len();
+
+    nums.reverse();
+    nums[rotate_times..].reverse();
+    nums[..rotate_times].reverse();
+}
+
+pub fn rotate(nums: &mut [i32], rotate_times: i32) {
+    nums.rotate_right(rotate_times as usize % nums.len());
+}
+
+*/
