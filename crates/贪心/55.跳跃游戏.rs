@@ -7,19 +7,47 @@
 // @lc code=start
 impl crate::Solution {
     pub fn can_jump(nums: Vec<i32>) -> bool {
-        nums.into_iter()
-            .enumerate()
-            .try_fold(
-                0,
-                |furthest_reachable_index, (current_index, jump_distance)| {
-                    if current_index <= furthest_reachable_index {
-                        Some(furthest_reachable_index.max(current_index + jump_distance as usize))
-                    } else {
-                        None
-                    }
-                },
-            )
-            .is_some()
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn can_jump(nums: Vec<i32>) -> bool {
+    nums.into_iter()
+        .enumerate()
+        .try_fold(
+            0,
+            |furthest_reachable_index, (current_index, jump_distance)| {
+                if current_index <= furthest_reachable_index {
+                    Some(furthest_reachable_index.max(current_index + jump_distance as usize))
+                } else {
+                    None
+                }
+            },
+        )
+        .is_some()
+}
+
+*/

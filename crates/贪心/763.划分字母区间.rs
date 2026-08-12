@@ -7,30 +7,58 @@
 // @lc code=start
 impl crate::Solution {
     pub fn partition_labels(raw_string: String) -> Vec<i32> {
-        let last_record =
-            raw_string
-                .bytes()
-                .enumerate()
-                .fold([0; 26], |mut last_record, (index, char)| {
-                    last_record[(char - b'a') as usize] = index;
-                    last_record
-                });
-
-        let mut answer = vec![];
-        raw_string
-            .bytes()
-            .enumerate()
-            .fold((0, 0), |(mut start, mut end), (index, char)| {
-                end = end.max(last_record[(char - b'a') as usize]);
-
-                if index == end {
-                    answer.push((end - start + 1) as i32);
-                    start = index + 1;
-                }
-                (start, end)
-            });
-
-        answer
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn partition_labels(raw_string: String) -> Vec<i32> {
+    let last_record =
+        raw_string
+            .bytes()
+            .enumerate()
+            .fold([0; 26], |mut last_record, (index, char)| {
+                last_record[(char - b'a') as usize] = index;
+                last_record
+            });
+
+    let mut answer = vec![];
+    raw_string
+        .bytes()
+        .enumerate()
+        .fold((0, 0), |(mut start, mut end), (index, char)| {
+            end = end.max(last_record[(char - b'a') as usize]);
+
+            if index == end {
+                answer.push((end - start + 1) as i32);
+                start = index + 1;
+            }
+            (start, end)
+        });
+
+    answer
+}
+
+*/

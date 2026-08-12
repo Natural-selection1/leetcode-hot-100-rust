@@ -8,43 +8,75 @@
 impl crate::Solution {
     // 贪心
     pub fn max_profit(prices: Vec<i32>) -> i32 {
-        prices
-            .iter()
-            .fold(
-                (0, i32::MAX / 2),
-                |(max_profit, min_price), &current_price| {
-                    (
-                        max_profit.max(current_price - min_price),
-                        min_price.min(current_price),
-                    )
-                },
-            )
-            .0
+        todo!()
     }
 
     // 前/后缀
     pub fn max_profit_(prices: Vec<i32>) -> i32 {
-        let prefix_min: Vec<i32> = prices
-            .iter()
-            .scan(i32::MAX, |min, &price| {
-                *min = (*min).min(price);
-                Some(*min)
-            })
-            .collect();
-
-        let postfix_max: Vec<i32> = prices
-            .iter()
-            .rev()
-            .scan(i32::MIN, |max, &price| {
-                *max = (*max).max(price);
-                Some(*max)
-            })
-            .collect();
-
-        Iterator::zip(postfix_max.iter().rev(), prefix_min.iter())
-            .map(|(post, pre)| post - pre)
-            .max()
-            .unwrap()
+        todo!()
     }
 }
 // @lc code=end
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+pub fn max_profit(prices: Vec<i32>) -> i32 {
+    prices
+        .iter()
+        .fold(
+            (0, i32::MAX / 2),
+            |(max_profit, min_price), &current_price| {
+                (
+                    max_profit.max(current_price - min_price),
+                    min_price.min(current_price),
+                )
+            },
+        )
+        .0
+}
+
+pub fn max_profit_(prices: Vec<i32>) -> i32 {
+    let prefix_min: Vec<i32> = prices
+        .iter()
+        .scan(i32::MAX, |min, &price| {
+            *min = (*min).min(price);
+            Some(*min)
+        })
+        .collect();
+
+    let postfix_max: Vec<i32> = prices
+        .iter()
+        .rev()
+        .scan(i32::MIN, |max, &price| {
+            *max = (*max).max(price);
+            Some(*max)
+        })
+        .collect();
+
+    Iterator::zip(postfix_max.iter().rev(), prefix_min.iter())
+        .map(|(post, pre)| post - pre)
+        .max()
+        .unwrap()
+}
+
+*/
