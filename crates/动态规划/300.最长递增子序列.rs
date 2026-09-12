@@ -7,13 +7,38 @@
 // @lc code=start
 impl crate::Solution {
     // 动态规划
-    pub fn length_of_lis_(nums: Vec<i32>) -> i32 {
-        todo!()
+    pub fn length_of_lis(nums: Vec<i32>) -> i32 {
+        /*
+        dp数组含义:
+        dp[j] 表示以j为结尾的最长递增子序列
+
+        递推公式:
+        for i in i..j {
+            if nums[i] < nums[j] {
+                dp[j] = dp[j].max(dp[i] + 1)
+            }
+        }
+
+        初始化:
+        全1
+         */
+
+        let mut dp = vec![1; nums.len()];
+
+        for j in 1..nums.len() {
+            for i in 0..j {
+                if nums[i] < nums[j] {
+                    dp[j] = dp[j].max(dp[i] + 1)
+                }
+            }
+        }
+
+        *dp.iter().max().unwrap()
     }
 
     // 贪心
-    pub fn length_of_lis(nums: Vec<i32>) -> i32 {
-        todo!()
+    pub fn length_of_lis_(nums: Vec<i32>) -> i32 {
+        1
     }
 }
 // @lc code=end

@@ -31,16 +31,6 @@
  * 输出：false
  * 解释：数组不能分割成两个元素和相等的子集。
  *
- *
- *
- *
- * 提示：
- *
- *
- * 1
- * 1
- *
- *
  */
 
 struct Solution;
@@ -48,8 +38,69 @@ struct Solution;
 // @lc code=start
 impl Solution {
     pub fn can_partition(nums: Vec<i32>) -> bool {
-        todo!()
+        let sum = nums.iter().sum::<i32>();
+        if sum % 2 != 0 {
+            return false;
+        }
+        if nums.len() == 1 {
+            return false;
+        }
+
+        let half_sum = sum / 2;
+        let mut nums: Vec<usize> = nums
+            .into_iter()
+            .filter(|num| *num <= half_sum)
+            .map(|num| num as usize)
+            .collect();
+        nums.sort();
+
+        // dp数组含义:
+        // 对于数值 j, 任取 nums[..=i] 中的数字是否能够凑出, 布尔值为 dp[i][j]
+
+        // 递推公式:
+        // dp[i][j] =
+        //       dp[i - 1][j] // 不用当前数
+        //    || dp[i][j - i] // 使用当前数
+
+        // 初始化:
+        //   0 1 2 3 4 ... n
+        // 2 t
+        // 3 t
+        // 5 t
+
+        let length = (half_sum + 1) as usize;
+        let width = nums.len();
+
+        let mut dp = vec![vec![false; length]; width];
+        for n in 0..width {
+            dp[n][0] = true
+        }
+
+        for i in 0..width {
+            for j in 1..length {
+                let mut best = false;
+                if i >= 1 {
+                    best |= dp[i - 1][j] // 不选当前数
+                }
+                if i >= 1 && j >= nums[i] {
+                    best |= dp[i - 1][j - nums[i]] // 选了当前数
+                }
+                dp[i][j] = best
+            }
+        }
+
+        // fprint(&dp);
+        dp[width - 1][length - 1]
     }
+}
+
+use std::fmt::Debug;
+fn fprint<T: Debug>(dp: &Vec<Vec<T>>) {
+    for row in dp {
+        println!("{:?}", row);
+    }
+
+    println!();
 }
 // @lc code=end
 

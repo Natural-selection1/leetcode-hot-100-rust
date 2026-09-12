@@ -53,7 +53,27 @@ struct Solution;
 // @lc code=start
 impl Solution {
     pub fn rob(values: Vec<i32>) -> i32 {
-        todo!()
+        /*
+        dp数组含义:
+        偷到第i个房间时的最大价值为 dp[i]
+
+        递推公式:
+        dp[i] = dp[i-1].max(dp[i-2] + value[i])
+
+        初始化:
+        0下标: dp[0] = value[0]
+        非0下标: dp[i] = 0
+         */
+
+        let mut dp = vec![0; values.len() + 1]; // 多加一个无价值房间
+        dp[0] = 0;
+        dp[1] = values[0];
+
+        for i in 2..(values.len() + 1) {
+            dp[i] = dp[i - 1].max(dp[i - 2] + values[i - 1])
+        }
+
+        dp[values.len()]
     }
 }
 // @lc code=end

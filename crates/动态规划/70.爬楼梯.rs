@@ -54,10 +54,39 @@ struct Solution;
 // @lc code=start
 impl Solution {
     pub fn climb_stairs(times: i32) -> i32 {
-        todo!()
+        let times = times as usize;
+
+        // dp数组含义:
+        // 爬到第n阶时, 有 dp[n] 种方式
+
+        // 递推公式:
+        // dp[n] = dp[n-1] + dp[n-2]
+
+        // dp数组初始化
+        let mut dp = vec![0; (times + 1) as usize];
+        dp[0] = 1; // 这里很重要!
+        dp[1] = 1;
+
+        for i in 2..(times + 1) {
+            dp[i] = dp[i - 1] + dp[i - 2]
+        }
+
+        dp[times]
     }
 }
 // @lc code=end
+
+#[test]
+fn main() {
+    use std::io::BufRead;
+    let stdin = std::io::stdin();
+    let stdin = stdin.lock();
+    let mut lines = stdin.lines();
+
+    let first_line = lines.next().unwrap().unwrap().parse::<i32>().unwrap();
+
+    eprintln!("\nanswer = {}\n", Solution::climb_stairs(first_line));
+}
 
 /*
 1

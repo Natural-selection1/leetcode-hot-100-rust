@@ -58,7 +58,37 @@ struct Solution;
 // @lc code=start
 impl Solution {
     pub fn coin_change(coins: Vec<i32>, target_amount: i32) -> i32 {
-        todo!()
+        let target_amount = target_amount as usize;
+        let coins: Vec<usize> = coins.into_iter().map(|n| n as usize).collect();
+
+        // 标准完全背包问题
+
+        /*
+        dp数组含义:
+        当 target 为 j 时, 最少能凑成的总数
+
+        递推公式:
+        dp[j] = dp[j].min(dp[j - coins[k]] + 1)
+
+        初始化:
+        0下标: dp[0] = 0
+        非0下标: dp[j] =
+         */
+
+        let mut dp = vec![usize::MAX / 2; target_amount + 1];
+        dp[0] = 0;
+
+        for coin in coins {
+            for j in coin..(target_amount + 1) {
+                dp[j] = dp[j].min(dp[j - coin] + 1)
+            }
+        }
+
+        if dp[target_amount] == usize::MAX / 2 {
+            -1
+        } else {
+            dp[target_amount] as i32
+        }
     }
 }
 // @lc code=end

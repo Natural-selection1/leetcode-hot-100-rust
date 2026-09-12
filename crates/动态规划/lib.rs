@@ -8,17 +8,43 @@ mod climb_stairs;
 mod coin_change;
 #[path = "./118.杨辉三角.rs"]
 mod generate;
+
+#[path = "./718.最长重复子数组.rs"]
+mod find_length;
+#[path = "./674.最长连续递增序列.rs"]
+mod find_length_of_lcis;
 #[path = "./300.最长递增子序列.rs"]
 mod length_of_lis;
+#[path = "./1143.最长公共子序列.rs"]
+mod longest_common_subsequence;
 #[path = "./32.最长有效括号.rs"]
 mod longest_valid_parentheses;
 #[path = "./152.乘积最大子数组.rs"]
 mod max_product;
+#[path = "./121.买卖股票的最佳时机.rs"]
+mod max_profit;
+#[path = "./122.买卖股票的最佳时机-ii.rs"]
+mod max_profit_2;
+#[path = "./123.买卖股票的最佳时机-iii.rs"]
+mod max_profit_3;
+#[path = "./309.买卖股票的最佳时机含冷冻期.rs"]
+mod max_profit_4;
+#[path = "./714.买卖股票的最佳时机含手续费.rs"]
+mod max_profit_5;
+#[path = "./746.使用最小花费爬楼梯.rs"]
+mod min_cost_climbing_stairs;
 #[path = "./279.完全平方数.rs"]
 mod num_squares;
+#[path = "./96.不同的二叉搜索树.rs"]
+mod num_trees;
 #[path = "./198.打家劫舍.rs"]
 mod rob;
+#[path = "./213.打家劫舍-ii.rs"]
+mod rob2;
 #[path = "./139.单词拆分.rs"]
 mod word_break;
+#[path = "./72.编辑距离.rs"]
+mod min_distance;
+
 
 struct Solution;
