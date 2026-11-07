@@ -60,10 +60,10 @@ impl Solution {
         dp[1] = 1;
         dp[2] = 2;
 
-        for i in 3..=n {
-            for head in 1..=i {
+        for node_count in 3..=n {
+            for head in 1..=node_count {
                 let left = head - 1;
-                let right = i - head;
+                let right = node_count - head;
 
                 dp[i] += dp[left] * dp[right]
             }

@@ -46,13 +46,38 @@
 // @lc code=start
 impl crate::Solution {
     // 二维dp
-    pub fn num_squares(target_num: i32) -> i32 {
+    pub fn num_squares_(target: i32) -> i32 {
         todo!()
     }
 
     // 一维dp
-    pub fn num_squares_(target_num: i32) -> i32 {
-        todo!()
+    pub fn num_squares(target: i32) -> i32 {
+        /*
+        dp数组含义:
+        dp[j] 表示当数值为j时, 凑成它的最小完全平方数的个数
+
+        递推公式:
+        dp[j] = dp[j].min(dp[j - val[i]])
+
+        初始化:
+         */
+        let target = target as usize;
+        let mut squares = vec![];
+        for i in 1..target {
+            if i * i > target { break }
+            squares.push(i*i);
+        }
+
+        let mut dp = vec![];
+        for i in 0..target + 1{
+            dp.push(i);
+        }
+        for square in squares {
+            for j in square..target+1 {
+                dp[j] = dp[j].min(dp[j - square] + 1);
+            }
+        }
+        dp[target] as i32
     }
 }
 // @lc code=end
@@ -80,13 +105,13 @@ impl crate::Solution {
 0
 
 // 二维dp
-pub fn num_squares(target_num: i32) -> i32 {
-        let target_num = target_num as usize;
-        let mut dp = vec![vec![i32::MAX; target_num + 1]; 101];
+pub fn num_squares(target: i32) -> i32 {
+        let target = target as usize;
+        let mut dp = vec![vec![i32::MAX; target + 1]; 101];
 
         dp[0][0] = 0;
-        for i in 1..=((target_num as f64).sqrt() as usize) {
-            for j in 0..=target_num {
+        for i in 1..=((target as f64).sqrt() as usize) {
+            for j in 0..=target {
                 match j < (i * i) {
                     // 来自上一行同列
                     true => dp[i][j] = dp[i - 1][j],
@@ -96,28 +121,28 @@ pub fn num_squares(target_num: i32) -> i32 {
             }
         }
 
-        dp[(target_num as f64).sqrt() as usize][target_num]
+        dp[(target as f64).sqrt() as usize][target]
     }
 
 // 一维dp
-pub fn num_squares_(target_num: i32) -> i32 {
-        let target_num = target_num as usize;
-        let mut min_squares_sum: Vec<i32> = (0..=target_num).map(|i| i as i32).collect();
+pub fn num_squares_(target: i32) -> i32 {
+        let target = target as usize;
+        let mut min_squares_sum: Vec<i32> = (0..=target).map(|i| i as i32).collect();
         // 以 12 举例
         // 列标:               0  1   2   3  4   5   6   7   8  9   10  11  12
         // 初始化(1开始):      0  1   2   3  4   5   6   7   8  9   10  11  12
         // 2:                  0  1   2   3  1   2   3   4   2  3   4   5   3   // 只更新了4之后的列
         // 3:                  0  1   2   3  1   2   3   4   2  1   2   3   3   // 只更新了9之后的列
         //
-        // 行标从 2, 3 ... target_num.isqrt()
-        // 列标只更新从行标的平方开始到target_num
-        for num in 2..=(target_num as f64).sqrt() as usize {
-            for i in (num * num)..=target_num {
+        // 行标从 2, 3 ... target.isqrt()
+        // 列标只更新从行标的平方开始到target
+        for num in 2..=(target as f64).sqrt() as usize {
+            for i in (num * num)..=target {
                 min_squares_sum[i] = min_squares_sum[i].min(min_squares_sum[i - (num * num)] + 1);
             }
         }
 
-        min_squares_sum[target_num]
+        min_squares_sum[target]
     }
 }
 */

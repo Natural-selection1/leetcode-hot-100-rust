@@ -103,7 +103,7 @@ pub fn word_break(raw_string: String, word_dict: Vec<String>) -> bool {
 
         'r: for r in 1..=string_len {
             for l in 0..r {
-                if words.contains(&raw_string[l..r]) && dp[l] {
+                if words.contains(&raw_string[l..=(r - 1)]) && dp[l] {
                     dp[r] = true;
                     continue 'r;
                 }

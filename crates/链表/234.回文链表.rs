@@ -6,21 +6,9 @@
 
 
 
-// @lc code=start
 use crate::ListNode;
 
-macro_rules! cursor_move {
-    ($to:ident = $from:ident >> $k:expr) => {{
-        let mut current = $from;
-
-        for _ in 0..$k {
-            current = current.and_then(|node| node.next.as_ref());
-        }
-
-        $to = current;
-    }};
-}
-
+// @lc code=start
 impl crate::Solution {
     // 快慢指针: 反转后半段, 比较前半段和后半段
     pub fn is_palindrome_1(mut head: Option<Box<ListNode>>) -> bool {
@@ -29,7 +17,43 @@ impl crate::Solution {
 
     // 快慢指针: 收集前半段, 比较后半段
     pub fn is_palindrome(head: Option<Box<ListNode>>) -> bool {
-        todo!()
+        if head.is_none() || head.as_ref().unwrap().next.is_none() {
+            return true;
+        }
+        // 现在至少有两个节点
+        let dummy = ListNode {
+            val: 0,
+            next: head,
+        };
+        let mut fast: &ListNode = &dummy;
+        let mut slow: &ListNode = &dummy;
+        let mut stack = vec![];
+
+        loop {
+            fast = fast.next.as_ref().unwrap().next.as_ref().unwrap();
+            slow = slow.next.as_ref().unwrap();
+
+            stack.push(slow.val);
+
+            if let Some(next_1) = fast.next.as_ref() {
+                if let Some(next_2) = next_1.next.as_ref() {
+                    continue;
+                }
+            }
+
+            if fast.next.as_ref().is_none() {
+                slow = slow.next.as_ref().unwrap();
+            } else {
+                slow = slow.next.as_ref().unwrap();
+                slow = slow.next.as_ref().unwrap();
+            }
+
+            break;
+        }
+
+        // 这里该怎么写?
+
+        false
     }
 
     // 直接收集法

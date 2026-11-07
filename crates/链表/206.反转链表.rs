@@ -15,7 +15,7 @@ impl crate::Solution {
 
     // 递归写法
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        todo!()
+        reverse(None, head)
     }
 }
 
@@ -23,7 +23,15 @@ fn reverse(
     previous_node: Option<Box<ListNode>>,
     current_node: Option<Box<ListNode>>,
 ) -> Option<Box<ListNode>> {
-    todo!()
+    match current_node {
+        None => previous_node,
+        Some(mut node) => {
+            let next = node.next.take();
+            node.next = previous_node;
+
+            reverse(Some(node), next)
+        }
+    }
 }
 
 // @lc code=end

@@ -64,8 +64,48 @@ struct Solution;
 // @lc code=start
 impl Solution {
     pub fn min_window(raw: String, template: String) -> String {
-        
-        todo!()
+        use std::collections::HashMap;
+        let raw_chars: Vec<char> = raw.chars().collect();
+        let template_chars: Vec<char> = template.chars().collect();
+
+        let mut char_count_map: HashMap<char, i32> = HashMap::new();
+        for char in template_chars {
+            char_count_map.entry(char)
+                .and_modify(|count| *count -= 1)
+                .or_insert(-1);
+        }
+
+        let mut l_index = 0;
+        let (mut ans_l, mut ans_r) = (0, usize::MAX / 2);
+
+        for r_index in 0..raw_chars.len() {
+            let r_char = raw_chars[r_index];
+            if !char_count_map.contains_key(&r_char) {
+                continue;
+            }
+            *char_count_map.get_mut(&r_char).unwrap() += 1;
+
+            while {
+                let l_char = raw_chars[l_index];
+                !char_count_map.contains_key(&l_char) || char_count_map[&l_char] >= 1
+            } {
+                let l_char = raw_chars[l_index];
+                char_count_map.entry(l_char).and_modify(|count| *count -= 1);
+                l_index += 1;
+            }
+
+            if char_count_map.values().all(|count| *count >= 0)
+                &&  r_index - l_index < ans_r - ans_l
+            {
+                (ans_l, ans_r) = (l_index, r_index);
+            }
+        }
+
+        if ans_r == usize::MAX / 2 {
+            return String::new();
+        } else {
+            raw_chars[ans_l..=ans_r].iter().collect()
+        }
     }
 }
 // @lc code=end

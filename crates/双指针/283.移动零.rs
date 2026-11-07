@@ -7,7 +7,14 @@
 // @lc code=start
 impl crate::Solution {
     pub fn move_zeroes(nums: &mut [i32]) {
-        todo!()
+        let mut next_not_zero_num_index = 0;
+
+        for index in 0..nums.len() {
+            if nums[index] != 0 {
+                nums.swap(index, next_not_zero_num_index);
+                next_not_zero_num_index += 1;
+            }
+        }
     }
 }
 // @lc code=end
@@ -44,9 +51,7 @@ pub fn move_zeroes(nums: &mut [i32]) {
 
     for index in 0..nums.len() {
         if nums[index] != 0 {
-            if index != next_not_zero_num_index {
-                nums.swap(index, next_not_zero_num_index);
-            }
+            nums.swap(index, next_not_zero_num_index);
             next_not_zero_num_index += 1;
         }
     }

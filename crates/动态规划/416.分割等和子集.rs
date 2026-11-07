@@ -39,12 +39,8 @@ struct Solution;
 impl Solution {
     pub fn can_partition(nums: Vec<i32>) -> bool {
         let sum = nums.iter().sum::<i32>();
-        if sum % 2 != 0 {
-            return false;
-        }
-        if nums.len() == 1 {
-            return false;
-        }
+        if sum % 2 != 0 { return false }
+        if nums.len() == 1 { return false }
 
         let half_sum = sum / 2;
         let mut nums: Vec<usize> = nums
@@ -69,28 +65,18 @@ impl Solution {
         // 5 t
 
         let length = (half_sum + 1) as usize;
-        let width = nums.len();
 
-        let mut dp = vec![vec![false; length]; width];
-        for n in 0..width {
-            dp[n][0] = true
-        }
+        let mut dp = vec![false; length];
+        dp[0] = true;
 
-        for i in 0..width {
-            for j in 1..length {
-                let mut best = false;
-                if i >= 1 {
-                    best |= dp[i - 1][j] // 不选当前数
-                }
-                if i >= 1 && j >= nums[i] {
-                    best |= dp[i - 1][j - nums[i]] // 选了当前数
-                }
-                dp[i][j] = best
+        for num in nums {
+            for j in (num..length).rev() {
+                dp[j] = dp[j] || dp[j - num];
             }
         }
 
         // fprint(&dp);
-        dp[width - 1][length - 1]
+        dp[length - 1]
     }
 }
 

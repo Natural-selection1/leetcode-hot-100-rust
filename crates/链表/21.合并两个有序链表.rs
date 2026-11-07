@@ -12,7 +12,22 @@ impl crate::Solution {
         mut list_1: Option<Box<ListNode>>,
         mut list_2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        todo!()
+        let mut dummy = ListNode {val: 0, next: None};
+        let mut cursor: &mut ListNode = &mut dummy;
+
+        while let (Some(head_1), Some(head_2)) = (list_1.as_ref(), list_2.as_ref()) {
+            let list_x = if head_1.val < head_2.val {
+                &mut list_1
+            } else {
+                &mut list_2
+            };
+            cursor.next = list_x.take();
+            cursor = cursor.next.as_mut().unwrap();
+            *list_x = cursor.next.take();
+        }
+
+        cursor.next = list_1.or(list_2);
+        dummy.next
     }
 
     pub fn merge_two_lists_2(

@@ -9,7 +9,29 @@ use crate::ListNode;
 
 impl crate::Solution {
     pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
-        todo!()
+        let dummy = ListNode {
+            val:0,
+            next: head,
+        };
+        let mut fast: &ListNode = &dummy;
+        let mut slow: &ListNode = &dummy;
+
+        for _ in 0..n {
+            fast = fast.next.as_ref().unwrap();
+        }
+
+        while let Some(node) = fast.next.as_ref() {
+            fast = node;
+            slow = slow.next.as_ref().unwrap();
+        }
+
+        #[allow(mutable_transmutes)]
+        let slow: &mut ListNode = unsafe { std::mem::transmute(slow) };
+
+        let mut next_node = slow.next.take().unwrap();
+        slow.next = next_node.next.take();
+
+        dummy.next
     }
 }
 // @lc code=end

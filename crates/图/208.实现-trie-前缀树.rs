@@ -9,30 +9,57 @@ use std::collections::HashMap;
 
 #[derive(Default)]
 pub struct Trie {
-    root_table: Table,
+    table: Table,
 }
 
 #[derive(Default)]
 struct Table {
-    children_table: HashMap<char, Box<Table>>,
+    table: HashMap<char, Box<Table>>,
     is_word: bool,
 }
 
 impl Trie {
     pub fn new() -> Self {
-        todo!()
+        Trie {
+        table: Table {
+            table: HashMap::new(),
+            is_word: false,
+        }
+        }
     }
 
     pub fn insert(&mut self, target_word: String) {
-        todo!()
+        let mut layer = &mut self.table;
+        for char in target_word.chars() {
+            layer = layer.table.entry(char).or_insert(Box::new(Table::default()));
+        }
+        layer.is_word = true;
     }
 
     pub fn search(&self, target_word: String) -> bool {
-        todo!()
+        let mut layer = &self.table;
+        for char in target_word.chars() {
+            if let Some(next_layer) = layer.table.get(&char) {
+                layer = next_layer;
+            } else {
+                return false;
+            }
+        }
+
+        layer.is_word
     }
 
     pub fn starts_with(&self, prefix: String) -> bool {
-        todo!()
+        let mut layer = &self.table;
+        for char in prefix.chars() {
+            if let Some(next_layer) = layer.table.get(&char) {
+                layer = next_layer;
+            } else {
+                return false;
+            }
+        }
+
+        true
     }
 
     fn get_node(&self, target_word: &str) -> Option<&Table> {

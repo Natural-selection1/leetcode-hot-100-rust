@@ -9,7 +9,13 @@
 impl crate::Solution {
     // used 数组
     pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
-        todo!()
+        let mut path: Vec<i32> = vec![];
+        let mut result: Vec<Vec<i32>> = vec![];
+        let mut used = vec![false; nums.len()];
+
+        backtracing(&nums, &mut path, &mut result, &mut used);
+
+        result
     }
 
     // 原地修改
@@ -18,17 +24,28 @@ impl crate::Solution {
     }
 }
 
-fn backtracking(
-    result: &mut Vec<Vec<i32>>,
-    path: &mut Vec<i32>,
+fn backtracing(
     nums: &Vec<i32>,
-    used: &mut Vec<bool>,
+    path: &mut Vec<i32>,
+    result: &mut Vec<Vec<i32>>,
+    used: &mut Vec<bool>
 ) {
-    todo!()
-}
+    if path.len() == nums.len() {
+        result.push(path.clone());
+        return;
+    }
 
-fn dfs(first: usize, nums: &mut Vec<i32>, full_permutation: &mut Vec<Vec<i32>>) {
-    todo!()
+    for i in 0..nums.len() {
+        if used[i] == true {
+            continue;
+        }
+
+        used[i] = true;
+        path.push(nums[i]);
+        backtracing(nums, path, result, used);
+        path.pop();
+        used[i] = false;
+    }
 }
 // @lc code=end
 

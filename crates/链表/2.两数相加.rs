@@ -21,7 +21,7 @@ impl crate::Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        todo!()
+        compute(l1, l2, 0)
     }
 }
 
@@ -30,7 +30,26 @@ fn compute(
     l2: Option<Box<ListNode>>,
     mut carry: i32,
 ) -> Option<Box<ListNode>> {
-    todo!()
+    if l1.is_some() || l2.is_some() || carry != 0 {
+        if let Some(node) = l1.as_ref() {
+            carry += node.val;
+        }
+        if let Some(node) = l2.as_ref() {
+            carry += node.val;
+        }
+        Some(Box::new(
+            ListNode {
+                val: carry % 10,
+                next: compute(
+                    l1.and_then(|node| node.next),
+                    l2.and_then(|node| node.next),
+                    carry / 10,
+                )
+            }
+        ))
+    } else {
+        None
+    }
 }
 // @lc code=end
 
